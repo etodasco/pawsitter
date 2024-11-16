@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
   end
 
-  resources :messages, only: [ :show, :destroy,]
+  resources :messages, only: [ :show, :destroy]
   resources :reviews, only: [:show]
 
 
