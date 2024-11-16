@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-  belongs_to :pet_reservations
-  belongs_to :reviews
-  belongs_to :messages
+  belongs_to :pet_sitter, class_name: 'User'
+  belongs_to :pet_owner, class_name: 'User'
+
 end
