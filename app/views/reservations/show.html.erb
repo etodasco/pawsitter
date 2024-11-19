@@ -1,21 +1,15 @@
 <div class="container chat">
   <h1>Your reservation for <%= @reservation.pet.name %></h1>
 
+  <%= turbo_stream_from "booking_#{@reservation.id}_messages" %>
   <div id="messages" class="messages">
     <% @reservation.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.user.nickname %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
-      </div>
-    <% end %>
+      <%= render "messages/message", message: message, user: current_user %>
+      <% end %>
   </div>
-</div>
 
 <%= simple_form_for [@reservation, @message],
-  html: {class: "d-flex"} do |f|
+  html: {class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f|
 %>
   <% other_user = current_user == @reservation.restaurant.user ? @reservation.user : @reservation.restaurant.user %>
   <%= f.input :content,
