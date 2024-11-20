@@ -9,3 +9,4 @@ User.create(
   email: "ashton@test.ca",
   password: "test123"
 )
+

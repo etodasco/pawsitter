@@ -1,4 +1,4 @@
 class PetReservation < ApplicationRecord
-  belongs_to :reservations
-  belongs_to :pets
+  belongs_to :reservation
+  belongs_to :pet
 end

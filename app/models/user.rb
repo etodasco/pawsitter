@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :pet_sitters_users, foreign_key: :pet_sitter_id, class_name: 'Reservation'
-  has_many :pet_sitters, through: :pet_sitters_users
-  has_many :pet_owners_users, foreign_key: :pet_owner_id, class_name: 'Reservation'
-  has_many :pet_owners, through: :pet_owners_users
+  has_many :pets 
+  has_many :messages
+  
+  has_many :sent_reservations, class_name: "Reservation", foreign_key: :pet_owner_id
+  has_many :received_reservations, class_name: "Reservation", foreign_key: :pet_sitter_id
 end
