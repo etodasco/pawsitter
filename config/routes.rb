@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :pets
 
-  resources :users, only: [ ], as: "pet_sitter", path: "pet_sitter" do
+  resources :users, only: [ ], as: "pet_sitter", path: "pet_sitters" do
     resources :reservations, only: [ :new, :create ]
   end
   

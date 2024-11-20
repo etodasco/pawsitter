@@ -1,0 +1,11 @@
+<h1>Reservations New</h1>
+
+
+
+<h2>Book a reservation with <%= @pet_sitter.email %></h2>
+
+<%= simple_form_for [@pet_sitter, @reservation], url: pet_sitter_reservations_path do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.submit %>
+<% end %>
