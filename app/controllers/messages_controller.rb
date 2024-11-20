@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
         format.html { redirect_to reservation_path(@reservation) }
       end
     else
-      render "reservations/show", status: :unprocessable_entity
+      render "?/show", status: :unprocessable_entity
     end
   end
 

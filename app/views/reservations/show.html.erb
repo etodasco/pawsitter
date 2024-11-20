@@ -11,7 +11,7 @@
 <%= simple_form_for [@reservation, @message],
   html: {class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f|
 %>
-  <% other_user = current_user == @reservation.restaurant.user ? @reservation.user : @reservation.restaurant.user %>
+  <% other_user = current_user == @reservation.pet_sitter ? @reservation.pet_owner : @reservation.pet_sitter %>
   <%= f.input :content,
     label: false,
     placeholder: "Message #{other_user.nickname}",

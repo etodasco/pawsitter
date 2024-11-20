@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
   belongs_to :user
-  belongs_to :reservations
+  belongs_to :reservation
 
   after_create_commit :broadcast_message
 
