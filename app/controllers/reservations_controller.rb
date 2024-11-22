@@ -13,7 +13,8 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.pet_sitter = @pet_sitter
     @reservation.pet_owner = current_user
-
+    @reservation.status = "pending"
+    
     if @reservation.save
       redirect_to @reservation
     else
@@ -28,6 +29,6 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:start_date, :end_date)
+    params.require(:reservation).permit(:start_date, :end_date, pet_ids: [])
   end
 end
