@@ -1,5 +1,11 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_pet_sitter, except: [:show]
+
+  def index
+    @reservations = Reservation.all
+  end
+
   def show
     @reservation = Reservation.find(params[:id])
     @message = Message.new
