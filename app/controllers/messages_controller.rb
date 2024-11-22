@@ -1,4 +1,9 @@
 class MessagesController < ApplicationController
+
+  def index
+    @messages = Message.all
+  end
+
   def create
     @reservation = Reservation.find(params[:reservation_id])
     @message = Message.new(message_params)
