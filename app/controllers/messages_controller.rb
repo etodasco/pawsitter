@@ -20,6 +20,11 @@ class MessagesController < ApplicationController
     else
       render "?/show", status: :unprocessable_entity
     end
+
+    def show
+      @message = Message.find(params[:id])
+    end
+
   end
 
   private

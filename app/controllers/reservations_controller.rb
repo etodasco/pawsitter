@@ -1,20 +1,16 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_pet_sitter, except: [ :index, :show]
+  before_action :set_pet_sitter, except: [ :index, :show, :destroy ]
 
   def index
     @reservations = current_user.sent_reservations
   end
 
-  def show
-    @reservation = Reservation.find(params[:id])
-    @message = Message.new
-  end
-
+  
   def new
     @reservation = Reservation.new
   end
-
+  
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.pet_sitter = @pet_sitter
@@ -25,6 +21,21 @@ class ReservationsController < ApplicationController
       redirect_to @reservation
     else
       render "new", status: :unprocessable_entity
+    end
+  end
+  
+  def show
+    @reservation = Reservation.find(params[:id])
+    @message = Message.new
+  end
+
+  def destroy
+    @reservation = Reservation.find_by(params[:reservation_id])
+
+    if @reservation.destroy
+       redirect_to reservations_path, notice: "Reservation deleted successfully."
+   else
+      redirect_to reservations_path, alert: "Failed to delete reservation."
     end
   end
 
