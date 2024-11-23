@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   end
   
   resources :reservations, only: [ :index, :show, :update, :destroy, :edit] do
-    resources :messages, only: [ :index, :create, :new]
+    resources :messages, only: [ :index, :create, :new ]
     resources :reviews, only: [:create]
   end
 
-  resources :messages, only: [ :show, :destroy,]
+  resources :messages, only: [ :show, :destroy ]
   resources :reviews, only: [:show]
 
 

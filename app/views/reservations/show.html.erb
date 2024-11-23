@@ -1,14 +1,14 @@
 <div class="container chat">
   <h1>Your reservation details:</h1>
   
-  
 <ul>
   <% @reservation.pets.each do |pet| %>
-  <li><%= pet.name %></li>
+  <li>Pet name: <%= pet.name %></li>
+  <li>Species: <%= pet.species %></li>
   <% end %>
 </ul>
 
-<h3>Reservation Status: <%= @reservation.status %></h3>
+<h5>Reservation Status: <%= @reservation.status %></h5>
 
   <%# turbo_stream_from "reservation_#{@reservation.id}_messages" %>
   <div id="messages" class="messages">
@@ -28,3 +28,6 @@
   %>
   <%= f.submit "Send", class: "btn btn-primary mb-3" %>
 <% end %>
+</div>
+
+<%= link_to 'Cancel Reservation', reservation_path(@reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-danger' %>
