@@ -1,4 +1,15 @@
 class MessagesController < ApplicationController
+
+  def index
+  end
+
+  def show
+    @message = Message.find(params[:id])
+  end
+
+  def new
+  end
+
   def create
     @reservation = Reservation.find(params[:reservation_id])
     @message = Message.new(message_params)

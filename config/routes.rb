@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [ ], as: "pet_sitter", path: "pet_sitters" do
     resources :reservations, only: [ :new, :create ]
   end
-  
+
   resources :reservations, only: [ :index, :show, :update, :destroy, :edit] do
     resources :messages, only: [ :index, :create, :new]
     resources :reviews, only: [:create]
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   resources :messages, only: [ :show, :destroy]
   resources :reviews, only: [:show]
+
+get '/profile', to: 'users#show', as: 'profile'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
