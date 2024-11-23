@@ -1,6 +1,19 @@
 <h1>Welcome to Pawsitter</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
+
+<% if @users.nil? || @users.empty? %>
+  <p>No users available.</p>
+<% else %>
+<h2>List of Users</h2>
+<ul>
+  <% @users.each do |user| %>
+    <%= link_to "View Profile", profile_path(user) %>  <!--  profil de l'utilisateur -->
+  <% end %>
+</ul>
+<% end %>
+
+
 <%# Geocoder "Mapbox" %>
 <div class="map" style="width: 100%; height: 600px;"
   data-controller="map"
