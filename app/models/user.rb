@@ -9,4 +9,7 @@ class User < ApplicationRecord
   
   has_many :sent_reservations, class_name: "Reservation", foreign_key: :pet_owner_id
   has_many :received_reservations, class_name: "Reservation", foreign_key: :pet_sitter_id
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
