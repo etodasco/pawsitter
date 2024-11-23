@@ -4,8 +4,8 @@ class CreateReservations < ActiveRecord::Migration[7.2]
       t.string :status
       t.date :start_date
       t.date :end_date
-      t.integer :pet_owner_id
-      t.integer :pet_sitter_id
+      t.references :pet_owner, foreign_key: { to_table: :users }, null: false
+      t.references :pet_sitter, foreign_key: { to_table: :users }, null: false
 
       t.timestamps
     end
