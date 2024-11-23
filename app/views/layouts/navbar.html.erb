@@ -15,29 +15,34 @@
 <body>
   <!-- Navbar at bottom -->
 <nav class="navbar fixed-bottom navbar-light bg-light">
-  <a class="navbar-brand" href="#">Fixed bottom</a>
-</nav>
-
-  <nav>
-    <ul>
-      <li><%= link_to root_path do %>
+  <ul class="navbar-nav w-100 d-flex justify-content-around mb-0">
+    <li class="nav-item">
+      <%= link_to root_path, class: 'nav-link text-center' do %>
         <i class="fas fa-home"></i> <!-- Home icon -->
-      <% end %></li>
-      <li><%= link_to reservations_path do %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to reservations_path, class: 'nav-link text-center' do %>
         <i class="fas fa-calendar-alt"></i> <!-- Reservations icon -->
-      <% end %></li>
-      <li><%= link_to messages_path do %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to messages_path, class: 'nav-link text-center' do %>
         <i class="fas fa-envelope"></i> <!-- Messages icon -->
-      <% end %></li>
-      <li><%= link_to profile_path do %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to profile_path, class: 'nav-link text-center' do %>
         <i class="fas fa-user"></i> <!-- Profile icon -->
-      <% end %></li>
-      <li><%= link_to destroy_user_session_path, method: :delete do %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-center' do %>
         <i class="fas fa-sign-out-alt"></i> <!-- Log out icon -->
-      <% end %></li>
-    </ul>
-  </nav>
-
+      <% end %>
+    </li>
+  </ul>
+</nav>
   <!-- Content -->
   <%= yield %>
 

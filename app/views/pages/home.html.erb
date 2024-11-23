@@ -5,60 +5,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PawSitter</title>
   <%= csrf_meta_tags %>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>PawSitter</h1>
-    <p>Your trusted platform for finding the best pet sitters when you're away.</p>
-  </header>
+  <!-- Header Section -->
+  <header class="py-3 mb-4 border-bottom bg-light">
+  <div class="container d-flex flex-wrap justify-content-center">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <span class="custom-title">PawSitter</span>
+    </a>
+  </div>
+</header>
 
-  <section>
-    <h2>Search for a PawSitter</h2>
-    <p>Find the perfect sitter for your furry friends.</p>
 
-   <div class="search-bar">
-  <form action="/search" method="get">
-    <!-- Location Input -->
-    <div class="search-input">
-      <label for="location">Where</label>
-      <input type="text" id="location" name="location" placeholder="Anywhere" />
+
+  <!-- Search Bar Section -->
+<%= form_with(url: pets_path, method: :get, local: true) do |form| %>
+  <div class="container">
+    <!-- Custom search bar -->
+    <div class="search-bar d-flex gap-2 mx-auto">
+
+      <!-- Address Input Field with Search Icon -->
+      <div class="input-group">
+        <span class="input-group-text"><i class="fas fa-search"></i></span>
+        <%= form.text_field :address, class: "form-control form-control-sm destination-input", placeholder: "Search by area.." %>
+      </div>
+
+      <!-- Start Date Input Field with Calendar Icon -->
+      <div class="input-group">
+        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+        <%= form.date_field :start_date, class: "form-control form-control-sm date-input" %>
+      </div>
+
+      <!-- End Date Input Field with Calendar Icon -->
+      <div class="input-group">
+        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+        <%= form.date_field :end_date, class: "form-control form-control-sm date-input" %>
+      </div>
+
+      <!-- Submit Button with Search Icon -->
+    <%= button_tag type: "submit", class: "btn btn-primary btn-sm search-button" do %>
+        <i class="fas fa-search"></i>
+        <% end %>
+
     </div>
+  </div>
+<% end %>
 
-    <!-- Date Range Input -->
-    <div class="search-input">
-      <label for="check-in">Check-in</label>
-      <input type="date" id="check-in" name="check_in" />
+  <!-- Map Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="fw-light text-center mb-4">Available Sitters Near You</h2>
+      <div class="map" style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
-    <div class="search-input">
-      <label for="check-out">Check-out</label>
-      <input type="date" id="check-out" name="check_out" />
+  </section>
+
+  <!-- Album Section -->
+  <section class="album py-5 bg-light">
+    <div class="container">
+      <h2 class="fw-light text-center mb-4">Popular Sitters</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% 3.times do |i| %> <!-- Replace this loop with dynamic sitter data -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"></rect>
+              </svg>
+              <div class="card-body">
+                <p class="card-text">This is a sample sitter profile. Replace this with sitter data.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Contact</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
+  </section>
 
-    <!-- Category or Guests -->
-    <div class="search-input">
-      <label for="guests">Guests</label>
-      <input type="number" id="guests" name="guests" min="1" placeholder="1" />
+  <!-- Footer -->
+  <footer class="text-muted py-5">
+    <div class="container">
+      <p class="mb-1">&copy; 2024 PawSitter. All rights reserved.</p>
     </div>
-
-    <!-- Search Button -->
-    <button type="submit" class="search-btn">
-      <i class="fas fa-search"></i> Search
-    </button>
-  </form>
-</div>
-
-<%# Geocoder "Mapbox" %>
- <section>
-    <h2>Available Sitters Near You</h2>
-<div class="map" style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
-</section>
-
-  <footer>
-    <p>&copy; 2024 PawSitter. All rights reserved.</p>
   </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
