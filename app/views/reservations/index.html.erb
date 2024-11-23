@@ -1,3 +1,14 @@
 <h1>All My Reservations</h1>
 
-<%= @reservation %>
+<% @reservations.each do |reservation| %>
+    <%=  reservation.status %>
+    <%= reservation.start_date %>
+    <%= reservation.end_date %>
+    <%= reservation.pet_sitter.first_name %>
+<% end %>
+
+<%# <ul>
+  <% @reservation.pets.each do |pet| %>
+  <%# <li>Pet name: <%= pet.name</li> %>
+  <%# <% end %>
+<%# </ul> %>

@@ -1,9 +1,9 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_pet_sitter, except: [:show]
+  before_action :set_pet_sitter, except: [ :index, :show]
 
   def index
-    @reservations = Reservation.all
+    @reservations = current_user.sent_reservations
   end
 
   def show
