@@ -1,9 +1,64 @@
-<h1>Welcome to Pawsitter</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PawSitter</title>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <h1>PawSitter</h1>
+    <p>Your trusted platform for finding the best pet sitters when you're away.</p>
+  </header>
+
+  <section>
+    <h2>Search for a PawSitter</h2>
+    <p>Find the perfect sitter for your furry friends.</p>
+
+   <div class="search-bar">
+  <form action="/search" method="get">
+    <!-- Location Input -->
+    <div class="search-input">
+      <label for="location">Where</label>
+      <input type="text" id="location" name="location" placeholder="Anywhere" />
+    </div>
+
+    <!-- Date Range Input -->
+    <div class="search-input">
+      <label for="check-in">Check-in</label>
+      <input type="date" id="check-in" name="check_in" />
+    </div>
+    <div class="search-input">
+      <label for="check-out">Check-out</label>
+      <input type="date" id="check-out" name="check_out" />
+    </div>
+
+    <!-- Category or Guests -->
+    <div class="search-input">
+      <label for="guests">Guests</label>
+      <input type="number" id="guests" name="guests" min="1" placeholder="1" />
+    </div>
+
+    <!-- Search Button -->
+    <button type="submit" class="search-btn">
+      <i class="fas fa-search"></i> Search
+    </button>
+  </form>
+</div>
 
 <%# Geocoder "Mapbox" %>
+ <section>
+    <h2>Available Sitters Near You</h2>
 <div class="map" style="width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+</section>
+
+  <footer>
+    <p>&copy; 2024 PawSitter. All rights reserved.</p>
+  </footer>
+</body>
+</html>
