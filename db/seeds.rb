@@ -16,7 +16,9 @@ ashton = User.create!(
   first_name: "ashton",
   last_name: "todasco",
   email: "ashton@test.ca",
-  password: "test123"
+  password: "test123",
+  pet_sitter: true,
+  address: "5333 Casgrain Ave Suite 102, Montreal, Quebec H2T 1X3"
 )
 
 bella = Pet.create!(
