@@ -7,7 +7,8 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
   end
 
-  def new
+  def new 
+    @messages = Message.new
   end
 
   def create
@@ -26,6 +27,11 @@ class MessagesController < ApplicationController
     else
       render "?/show", status: :unprocessable_entity
     end
+
+    def show
+      @message = Message.find(params[:id])
+    end
+
   end
 
   private
