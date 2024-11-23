@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "pages#home"
-  get "profile/:id", to: "pages#profile", as: :profile
+  # get "profile/:id", to: "pages#profile", as: :profile
   resources :pets
 
   resources :users, as: "pet_sitter", path: "pet_sitters" do
