@@ -1,39 +1,44 @@
 <div class="container chat">
   <h2>Your reservation details:</h2>
 
-<ul>
-  <li><h6><strong>Reservation Status: <%= @reservation.status %></strong></li></h6>
-  <li>Pet sitter: <%= @reservation.pet_sitter.first_name.capitalize %></li>
-  <% @reservation.pets.each do |pet| %>
-  <li>Pet name: <%= pet.name %></li>
-  <li>Species: <%= pet.species %></li>
-  <% end %>
-</ul>
+  <ul>
+    <h6><li><strong>Reservation Status: <%= @reservation.status %></strong></li></h6>
+    <li>Pet sitter: <%= @reservation.pet_sitter.first_name.capitalize %></li>
+    <% @reservation.pets.each do |pet| %>
+    <li>Pet name: <%= pet.name %></li>
+    <li>Species: <%= pet.species %></li>
+    <% end %>
+  </ul>
 
 
 <div class="container mt-4">
   <h3>Chat Session:</h3>
 
-  <%= turbo_stream_from "reservation_#{@reservation.id}_messages" %>
-  <div id="messages" class="messages">
-    <% @reservation.messages.each do |message| %>
-      <%= render "messages/message", message: message, user: current_user %>
-      <% end %>
+<div class="container border border-shadow-dark">
+  <div class="container mt-4">
+    <%= turbo_stream_from "reservation_#{@reservation.id}_messages" %>
+    <div id="messages" class="messages">
+      <% @reservation.messages.each do |message| %>
+        <%= render "messages/message", message: message, user: current_user %>
+        <% end %>
+    </div>
   </div>
 
-  <%= simple_form_for [@reservation, @message],
-    html: {class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f|
-  %>
-    <% other_user = current_user == @reservation.pet_sitter ? @reservation.pet_owner : @reservation.pet_sitter %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Message #{other_user.nickname.capitalize}...",
-      wrapper_html: {class: "flex-grow-1"}
+  <div class="rounded">
+    <%= simple_form_for [@reservation, @message],
+      html: {class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f|
     %>
+      <% other_user = current_user == @reservation.pet_sitter ? @reservation.pet_owner : @reservation.pet_sitter %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message #{other_user.nickname.capitalize}...",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
+    <% end %>
   </div>
+</div>
 
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-end mt-4">
   <%= link_to 'Cancel Reservation', reservation_path(@reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-danger' %>
 </div>
