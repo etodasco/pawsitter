@@ -1,5 +1,9 @@
 <h1>My Reservations: </h1>
 
+<div class="text-end">
+  <%= link_to "Create Test Reservation", new_pet_sitter_reservation_path(pet_sitter_id: 2), class: "btn btn-primary" %>
+</div>
+
 <%# Pet_owner sent reservations %>
 <div class="row">
   <% @sent_reservations.each do |reservation| %>
@@ -8,20 +12,16 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Reservation Status: <%= reservation.status %></h5>
-            <ul>
-              <p class="card-text">
-                <li><strong>Petsitter:</strong> <%= reservation.pet_sitter.first_name.capitalize %> <%= reservation.pet_sitter.last_name.capitalize %></li>
-                <li><strong>Pet Reservation: </strong></li>
-                <% reservation.pet_reservations.each do |pet_reservation| %>
-                <%= pet_reservation.pet.name %>
-                <% end %>
-                <%# <li><strong>Reservation for:</strong> <%= reservation.pet_reservation.pet.name</li> %>
-                <li><strong>Start Date:</strong> <%= reservation.start_date %><br></li>
-                <li><strong>End Date:</strong> <%= reservation.end_date %><br></li>
-              </p>
+            <ul class="list-unstyled">
+              <li><strong>Petsitter:</strong> <%= reservation.pet_sitter.first_name.capitalize %> <%= reservation.pet_sitter.last_name.capitalize %></li>
+              <li><strong>Pet Reservation:</strong></li>
+              <% reservation.pet_reservations.each do |pet_reservation| %>
+                <li><%= pet_reservation.pet.name %></li>
+              <% end %>
+              <li><strong>Start Date:</strong> <%= reservation.start_date %></li>
+              <li><strong>End Date:</strong> <%= reservation.end_date %></li>
             </ul>
-            <%# <%= link_to "Message Petsitter", reservation_path(reservation), class: 'btn btn-success' %>
-            <%= link_to 'Cancel Reservation', reservation_path(reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-danger' %>
+            <%= link_to 'Cancel Reservation', reservation_path(reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-danger mt-3' %>
           </div>
         </div>
       <% end %>
@@ -29,7 +29,7 @@
   <% end %>
 </div>
 
-<%# Pet_sitter received_reservations %>
+<!-- Received Reservations -->
 <div class="row">
   <% @received_reservations.each do |reservation| %>
     <div class="col-md-4 mb-4">
@@ -37,25 +37,19 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Reservation Status: <%= reservation.status %></h5>
-            <ul>
-              <p class="card-text">
-                <li><strong>Pet owner:</strong> <%= reservation.pet_owner.first_name.capitalize %> <%= reservation.pet_sitter.last_name.capitalize %></li>
-                <li><strong>Pet Reservation: </strong></li>
-                <% reservation.pet_reservations.each do |pet_reservation| %>
-                <%= pet_reservation.pet.name %>
-                <% end %>
-                <%# <li><strong>Reservation for:</strong> <%= reservation.pet_reservation.pet.name</li> %>
-                <li><strong>Start Date:</strong> <%= reservation.start_date %><br></li>
-                <li><strong>End Date:</strong> <%= reservation.end_date %><br></li>
-              </p>
+            <ul class="list-unstyled">
+              <li><strong>Pet Owner:</strong> <%= reservation.pet_owner.first_name.capitalize %> <%= reservation.pet_owner.last_name.capitalize %></li>
+              <li><strong>Pet Reservation:</strong></li>
+              <% reservation.pet_reservations.each do |pet_reservation| %>
+                <li><%= pet_reservation.pet.name %></li>
+              <% end %>
+              <li><strong>Start Date:</strong> <%= reservation.start_date %></li>
+              <li><strong>End Date:</strong> <%= reservation.end_date %></li>
             </ul>
-            <%# <%= link_to "Message Petsitter", reservation_path(reservation), class: 'btn btn-success' %>
-            <%= link_to 'Cancel Reservation', reservation_path(reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-danger' %>
+            <%= link_to 'Cancel Reservation', reservation_path(reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-danger mt-3' %>
           </div>
         </div>
       <% end %>
     </div>
   <% end %>
 </div>
-
-
