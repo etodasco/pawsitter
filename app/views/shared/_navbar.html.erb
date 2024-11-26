@@ -28,40 +28,40 @@
 <!-- Navbar at bottom -->
   <!-- Navbar Home Button -->
 <nav class="navbar fixed-bottom navbar-light bg-light">
-  <ul class="navbar-nav w-100 d-flex flex-row justify-content-around align-items-center mb-0">
-    <li class="nav-item">
+  <ul class="navbar-nav w-100 d-flex flex-row justify-content-around align-items-center mb-0 py-2">
+    <li class="nav-item d-flex flex-column align-items-center">
       <%= link_to root_path, class: 'nav-link text-center' do %>
-        <i class="fas fa-home fa-2x"></i>
-        <p>Home</p> <!-- Home icon -->
+        <i class="fas fa-home fa-lg"></i>
+        <p class="mb-0 fs-6">Home</p>
       <% end %>
     </li>
     <!-- Navbar Reservations Button -->
-    <li class="nav-item">
+    <li class="nav-item d-flex flex-column align-items-center">
       <%= link_to reservations_path, class: 'nav-link text-center' do %>
-        <i class="fas fa-calendar-alt fa-2x"></i>
-        <p>Reservations</p> <!-- Reservations icon -->
+        <i class="fas fa-calendar-alt fa-lg"></i>
+        <p class="mb-0 fs-6">Reservations</p>
       <% end %>
     </li>
     <!-- Navbar Mail Button-->
-    <li class="nav-item">
+    <li class="nav-item d-flex flex-column align-items-center">
       <% if @reservation %>
         <%= link_to reservations_path(@reservation), class: 'nav-link text-center' do %>
-          <i class="fas fa-envelope fa-2x"></i> <!-- Messages icon -->
+          <i class="fas fa-envelope fa-lg"></i>
         <% end %>
-      <% end %> <!-- Close the `if` block -->
+      <% end %>
     </li>
     <!-- Navbar User Button -->
-    <li class="nav-item">
+    <li class="nav-item d-flex flex-column align-items-center">
       <%= link_to "#", class: 'nav-link text-center' do %>
-        <i class="fas fa-user fa-2x"></i>
-        <p>User Profile</p> <!-- Profile icon -->
+        <i class="fas fa-user fa-lg"></i>
+        <p class="mb-0 fs-6">User Profile</p>
       <% end %>
     </li>
     <!-- Navbar Log Out Icon -->
-    <li class="nav-item">
+    <li class="nav-item d-flex flex-column align-items-center">
       <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-center' do %>
-        <i class="fas fa-sign-out-alt fa-2x"></i>
-        <p>Logout</p> <!-- Log out icon -->
+        <i class="fas fa-sign-out-alt fa-lg"></i>
+        <p class="mb-0 fs-6">Logout</p>
       <% end %>
     </li>
   </ul>
