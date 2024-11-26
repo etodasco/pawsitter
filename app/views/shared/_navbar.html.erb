@@ -26,18 +26,23 @@
 </div>
 
 <!-- Navbar at bottom -->
+  <!-- Navbar Home Button -->
 <nav class="navbar fixed-bottom navbar-light bg-light">
   <ul class="navbar-nav w-100 d-flex flex-row justify-content-around align-items-center mb-0">
     <li class="nav-item">
       <%= link_to root_path, class: 'nav-link text-center' do %>
-        <i class="fas fa-home fa-2x"></i> <!-- Home icon -->
+        <i class="fas fa-home fa-2x"></i>
+        <p>Home</p> <!-- Home icon -->
       <% end %>
     </li>
+    <!-- Navbar Reservations Button -->
     <li class="nav-item">
       <%= link_to reservations_path, class: 'nav-link text-center' do %>
-        <i class="fas fa-calendar-alt fa-2x"></i> <!-- Reservations icon -->
+        <i class="fas fa-calendar-alt fa-2x"></i>
+        <p>Reservations</p> <!-- Reservations icon -->
       <% end %>
     </li>
+    <!-- Navbar Mail Button-->
     <li class="nav-item">
       <% if @reservation %>
         <%= link_to reservations_path(@reservation), class: 'nav-link text-center' do %>
@@ -45,14 +50,18 @@
         <% end %>
       <% end %> <!-- Close the `if` block -->
     </li>
+    <!-- Navbar User Button -->
     <li class="nav-item">
       <%= link_to "#", class: 'nav-link text-center' do %>
-        <i class="fas fa-user fa-2x"></i> <!-- Profile icon -->
+        <i class="fas fa-user fa-2x"></i>
+        <p>User Profile</p> <!-- Profile icon -->
       <% end %>
     </li>
+    <!-- Navbar Log Out Icon -->
     <li class="nav-item">
       <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-center' do %>
-        <i class="fas fa-sign-out-alt fa-2x"></i> <!-- Log out icon -->
+        <i class="fas fa-sign-out-alt fa-2x"></i>
+        <p>Logout</p> <!-- Log out icon -->
       <% end %>
     </li>
   </ul>
