@@ -16,7 +16,7 @@
               <li><strong>Petsitter:</strong> <%= reservation.pet_sitter.first_name.capitalize %> <%= reservation.pet_sitter.last_name.capitalize %></li>
               <li><strong>Pet Reservation:</strong></li>
               <% reservation.pet_reservations.each do |pet_reservation| %>
-                <li><%= pet_reservation.pet.name %></li>
+                <li><%= pet_reservation.pet.name.capitalize %></li>
               <% end %>
               <li><strong>Start Date:</strong> <%= reservation.start_date %></li>
               <li><strong>End Date:</strong> <%= reservation.end_date %></li>
