@@ -1,7 +1,7 @@
 
-<h1>Welcome to Pawsitter</h1>
-
-
+<div class="d-flex justify-content-center align-items-center">
+  <h1>Pawsitter</h1>
+</div>
 
   <!-- Search Bar Section -->
 <%= form_with(url: pets_path, method: :get, local: true, class: "container") do |form| %>
@@ -42,35 +42,36 @@
 <section class="album py-5 bg-light">
   <div class="container">
     <h2 class="fw-light text-center mb-4">Popular Sitters</h2>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <% @pet_sitters.each do |pet_sitter| %>
-          <div class="col">
-            <div class="card shadow-sm position-relative">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-              </svg>
-              <div class="position-absolute top-0 end-0 m-2 bg-light text-dark rounded px-2 py-1">
-                <%= pet_sitter.average_rating || "No Rating" %>
-                <i class="bi bi-star-fill"></i>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">
-                  <%= pet_sitter.first_name.to_s.capitalize %> <%= pet_sitter.last_name.to_s.capitalize %>
-                </h5>
-                <p class="mb-1"><strong>Description</strong>: <%= pet_sitter.description %> </p>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View Sitter</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Contact</button>
-                </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% @pet_sitters.each do |pet_sitter| %>
+        <div class="col">
+          <!-- Make the card clickable -->
+          <%= link_to "#", class: "card shadow-sm position-relative text-decoration-none" do %>
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+              role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#55595c"></rect>
+            </svg>
+            <div class="position-absolute top-0 end-0 m-2 bg-light text-dark rounded px-2 py-1">
+              <%= pet_sitter.average_rating || "No Rating" %>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= pet_sitter.first_name.to_s.capitalize %> <%= pet_sitter.last_name.to_s.capitalize %>
+              </h5>
+              <p class="mb-1"><strong>Description</strong>: <%= pet_sitter.description %></p>
+              <div class="d-flex justify-content-center">
+                <span class="btn btn-sm btn-outline-secondary">View Sitter</span>
               </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </section>
+
 
   <!-- Footer -->
 <footer class="text-muted py-5 bg-light">
