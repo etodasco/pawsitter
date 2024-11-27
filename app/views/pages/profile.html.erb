@@ -1,69 +1,70 @@
+<div class="contianer">
 
+  <h1><%= @user.nickname.to_s.capitalize || @user.first_name %>'s Profile Page: </h1>
 
-<h1>Profil de <%= @user.nickname || @user.first_name %></h1>
+  <div class="user-info">
+    <h3>Personal Information</h3>
+    <p><strong>Nickname :</strong> <%= @user.nickname.to_s.capitalize %></p>
+    <p><strong>First Name :</strong> <%= @user.first_name.to_s.capitalize %></p>
+    <p><strong>Last Name :</strong> <%= @user.last_name.to_s.capitalize %></p>
+    <p><strong>Address :</strong> <%= @user.address %></p>
+    <p><strong>Email :</strong> <%= @user.email %></p>
+    <p><strong>Rating :</strong> <%= @user.average_rating %>/5</p>
+  </div>
 
-<div class="user-info">
-  <h3>Personal informations</h3>
-  <p><strong>Pseudo :</strong> <%= @user.nickname %></p>
-  <p><strong>First Name :</strong> <%= @user.first_name %></p>
-  <p><strong>Last Name :</strong> <%= @user.last_name %></p>
-  <p><strong>Address :</strong> <%= @user.address %></p>
-  <p><strong>Email :</strong> <%= @user.email %></p>
-  <p><strong>Rating :</strong> <%= @user.average_rating %>/5</p>
+  <hr>
+
+  <div class="pets">
+    <h3>My Pets:</h3>
+    <% if @pets.any? %>
+      <ul>
+        <% @pets.each do |pet| %>
+          <li><%= link_to pet.name, pet_path(pet) %> - <%= pet.species.capitalize %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>You did not add a pet yet</p>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <div class="reservations">
+    <h3>My Reservations:</h3>
+    <% if @reservations_as_owner.any? %>
+      <ul>
+        <% @reservations_as_owner.each do |reservation| %>
+          <li>
+            <strong>Reservation :</strong> <%= reservation.status.capitalize %>
+            (<%= link_to "Details", reservation_path(reservation) %>) <!--  détails de la réservation -->
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No reservation</p>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <div class="reservations">
+    <h3>Reservation request:</h3>
+    <% if @reservations_as_petsitter.any? %>
+      <ul>
+        <% @reservations_as_petsitter.each do |reservation| %>
+          <li>
+            <strong>Reservation :</strong> <%= reservation.status.capitalize %>
+            (<%= link_to "Détails", reservation_path(reservation) %>)
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No reservation</p>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Update profile", edit_user_registration_path %>
+  </div>
+
 </div>
-
-<hr>
-
-<div class="pets">
-  <h3>My Pets</h3>
-  <% if @pets.any? %>
-    <ul>
-      <% @pets.each do |pet| %>
-        <li><%= link_to pet.name, pet_path(pet) %> - <%= pet.species.capitalize %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>You did not add a pet yet</p>
-  <% end %>
-</div>
-
-<hr>
-
-<div class="reservations">
-  <h3>My Reservations</h3>
-  <% if @reservations_as_owner.any? %>
-    <ul>
-      <% @reservations_as_owner.each do |reservation| %>
-        <li>
-          <strong>Reservation :</strong> <%= reservation.status.capitalize %>
-          (<%= link_to "Details", reservation_path(reservation) %>) <!--  détails de la réservation -->
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No reservation</p>
-  <% end %>
-</div>
-
-
-
-<hr>
-
-<div class="reservations">
-  <h3>Reservation request</h3>
-  <% if @reservations_as_petsitter.any? %>
-    <ul>
-      <% @reservations_as_petsitter.each do |reservation| %>
-        <li>
-          <strong>Reservation :</strong> <%= reservation.status.capitalize %>
-          (<%= link_to "Détails", reservation_path(reservation) %>)
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No reservation</p>
-  <% end %>
-</div>
-
-<div class="actions">
-  <%= link_to "Update profile", edit_user_registration_path %>
