@@ -1,24 +1,52 @@
-.navbar-pawsitter {
-  justify-content: space-between;
-  background: white;
+// Searchbar
+.input-group {
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.input-group .form-control {
+  border: none;
+}
+.input-group-text {
+  border: none;
+  background: #f8f9fa;
 }
 
-.navbar-pawsitter .navbar-collapse {
-  flex-grow: 0;
+// Map
+.map {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15); /* Fixed color syntax */
+  border-radius: 15px; /* Adjust the value to your preference */
+  overflow: hidden; /* Ensures content doesn't spill over rounded edges */
 }
 
-.navbar-pawsitter .navbar-brand img {
-  width: 40px;
+/* Navbar items should take equal space */
+nav.navbar.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1050; /* Make sure it is above other content */
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for the navbar */
 }
 
-.avatar {
-  color: black;
+nav ul.navbar-nav {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.avatar :hover {
-  color: rgb(158, 158, 158);
+nav ul.navbar-nav li.nav-item {
+  flex: 1;
+  text-align: center;
 }
 
-// .map {
-//   box-shadow: 0 .5rem 1rem rgba(black, .15);;
-// }
+nav ul.navbar-nav li.nav-item a.nav-link {
+  color: #000; /* Default text color */
+  font-size: 18px;
+  padding: 10px;
+}
+
+nav ul.navbar-nav li.nav-item a.nav-link:hover {
+  color: #007bff; /* Hover color */
+}

@@ -1,0 +1,11 @@
+<div 
+  id="message-<%= message.id %>"
+  class="message <%= message.user === user ? 'sent' : 'received' %>"
+  data-controller="message"
+  data-message-user-id-value="<%= message.user.id %>">
+  <p class="message-content"><%= message.content %></p>
+  <small>
+    <strong><%= message.user.nickname.capitalize %>:</strong>
+    <p><i><%= message.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%a %b %e at %l:%M %p") %></i></p>
+  </small>
+</div>

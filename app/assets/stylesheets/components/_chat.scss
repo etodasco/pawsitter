@@ -21,15 +21,27 @@
       width: fit-content;
       word-wrap: break-word;
     }
+
+    /* For received messages */
+    .message.received {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    /* For sent messages */
+    .message.sent {
+      align-items: flex-end;
+      text-align: right;
+    }
   
     .message.sent .message-content {
-      align-self: flex-start;
+      align-self: flex-end;
       background: $blue;
       color: $light-gray;
     }
   
     .message.received .message-content {
-      align-self: flex-end;
+      align-self: flex-start;
       background: $gray-200;
     }
 }
