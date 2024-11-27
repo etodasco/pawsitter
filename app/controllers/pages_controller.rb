@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [ :home ]
   
   def home
-    @users = User.all
+    # @users = User.all
     @pet_sitters = User.where(pet_sitter: true)
     # Geocode users for map markers
     @markers = @pet_sitters.geocoded.map do |pet_sitter|
