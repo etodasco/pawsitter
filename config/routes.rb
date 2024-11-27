@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "pets/new"
+  get "pets/create"
+  get "pets/show"
   devise_for :users
 
   root to: "pages#home"
@@ -6,7 +9,7 @@ Rails.application.routes.draw do
   get "profile", to: "pages#profile", as: :profile
   get "pet_sitter_profile/:id", to: "pages#pet_sitter_profile", as: :pet_sitter_profile
 
-  resources :pets
+  resources :pets, only: [ :new, :create, :show ]
 
   resources :users, as: "pet_sitter", path: "pet_sitters" do
     resources :reservations, only: [ :new, :create ]
