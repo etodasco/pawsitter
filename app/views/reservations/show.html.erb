@@ -1,16 +1,18 @@
 <div class="container chat">
   <h2>Your reservation details:</h2>
+</div>
 
-<ul>
-  <!-- Display reservation status -->
-  <h6><li><strong>Reservation Status: <%= @reservation.status %></strong></li></h6>
+<div class="container">
+  <ul>
+    <!-- Display reservation status -->
+    <h6><li><strong>Reservation Status: <%= @reservation.status %></strong></li></h6>
 
   <% if current_user == @reservation.pet_owner %>
     <!-- Sent Reservation (Owner) -->
     <li><strong>Pet sitter: <%= @reservation.pet_sitter.first_name.capitalize %></strong></li>
     <% @reservation.pets.each do |pet| %>
-      <li><strong>Pet name: <%= pet.name %></strong></li>
-      <li><strong>Species: <%= pet.species %></strong></li>
+      <li><strong>Pet name: <%= pet.name.capitalize %></strong></li>
+      <li><strong>Species: <%= pet.species.capitalize %></strong></li>
       <li><strong>Start Date:</strong> <%= @reservation.start_date %><br></strong></li>
       <li><strong>End Date:</strong> <%= @reservation.end_date %><br></strong></li>
     <% end %>
@@ -19,8 +21,8 @@
     <!-- Received Reservation (Sitter) -->
     <li><strong>Pet owner: <%= @reservation.pet_owner.first_name.capitalize %></strong></li>
     <% @reservation.pets.each do |pet| %>
-      <li><strong>Pet name: <%= pet.name %></strong></li>
-      <li><strong>Species: <%= pet.species %></strong></li>
+      <li><strong>Pet name: <%= pet.name.capitalize %></strong></li>
+      <li><strong>Species: <%= pet.species.capitalize %></strong></li>
       <li><strong>Start Date:</strong> <%= @reservation.start_date %><br></strong></li>
       <li><strong>End Date:</strong> <%= @reservation.end_date %><br></strong></li>
     <% end %>
@@ -28,7 +30,8 @@
     <!-- Case where the current user is neither the owner nor the sitter -->
     <li>Reservation not found for the current user.</li>
   <% end %>
-</ul>
+  </ul>
+</div>
 
 <div class="container mt-4">
   <h3>Chat Session:</h3>

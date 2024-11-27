@@ -1,27 +1,26 @@
-<h1>My Reservations: </h1>
+<h1 class="mb-4 text-center">My Reservations</h1>
 
-<div class="text-end">
-  <%= link_to "Create Test Reservation", new_pet_sitter_reservation_path(pet_sitter_id: 2), class: "btn btn-primary" %>
-</div>
-
-<%# Pet_owner sent reservations %>
+<%# Sent Reservations %>
+<h2 class="mb-3">Sent Reservations:</h2>
 <div class="row">
   <% @sent_reservations.each do |reservation| %>
-    <div class="col-md-4 mb-4">
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
       <%= link_to reservation_path(reservation), class: 'card-link text-decoration-none text-dark' do %>
-        <div class="card">
+        <div class="card shadow-sm">
           <div class="card-body">
-            <h5 class="card-title">Reservation Status: <%= reservation.status %></h5>
+            <h5 class="card-title mb-3">Status: <%= reservation.status %></h5>
             <ul class="list-unstyled">
               <li><strong>Petsitter:</strong> <%= reservation.pet_sitter.first_name.capitalize %> <%= reservation.pet_sitter.last_name.capitalize %></li>
-              <li><strong>Pet Reservation:</strong></li>
+              <li><strong>Pet(s):</strong></li>
               <% reservation.pet_reservations.each do |pet_reservation| %>
                 <li><%= pet_reservation.pet.name.capitalize %></li>
               <% end %>
-              <li><strong>Start Date:</strong> <%= reservation.start_date %></li>
-              <li><strong>End Date:</strong> <%= reservation.end_date %></li>
+              <li><strong>Start:</strong> <%= reservation.start_date %></li>
+              <li><strong>End:</strong> <%= reservation.end_date %></li>
             </ul>
-            <%= link_to 'Cancel Reservation', reservation_path(reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-danger mt-3' %>
+            <%= link_to 'Cancel', reservation_path(reservation), 
+              data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
+              class: 'btn btn-danger mt-3 w-100' %>
           </div>
         </div>
       <% end %>
@@ -29,24 +28,27 @@
   <% end %>
 </div>
 
-<!-- Received Reservations -->
+<%# Received Reservations %>
+<h2 class="mb-3">Received Reservations:</h2>
 <div class="row">
   <% @received_reservations.each do |reservation| %>
-    <div class="col-md-4 mb-4">
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
       <%= link_to reservation_path(reservation), class: 'card-link text-decoration-none text-dark' do %>
-        <div class="card">
+        <div class="card shadow-sm">
           <div class="card-body">
-            <h5 class="card-title">Reservation Status: <%= reservation.status %></h5>
+            <h5 class="card-title mb-3">Status: <%= reservation.status %></h5>
             <ul class="list-unstyled">
               <li><strong>Pet Owner:</strong> <%= reservation.pet_owner.first_name.capitalize %> <%= reservation.pet_owner.last_name.capitalize %></li>
-              <li><strong>Pet Reservation:</strong></li>
+              <li><strong>Pet(s):</strong></li>
               <% reservation.pet_reservations.each do |pet_reservation| %>
-                <li><%= pet_reservation.pet.name %></li>
+                <li><%= pet_reservation.pet.name.capitalize %></li>
               <% end %>
-              <li><strong>Start Date:</strong> <%= reservation.start_date %></li>
-              <li><strong>End Date:</strong> <%= reservation.end_date %></li>
+              <li><strong>Start:</strong> <%= reservation.start_date %></li>
+              <li><strong>End:</strong> <%= reservation.end_date %></li>
             </ul>
-            <%= link_to 'Cancel Reservation', reservation_path(reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-danger mt-3' %>
+            <%= link_to 'Cancel', reservation_path(reservation), 
+              data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
+              class: 'btn btn-danger mt-3 w-100' %>
           </div>
         </div>
       <% end %>
