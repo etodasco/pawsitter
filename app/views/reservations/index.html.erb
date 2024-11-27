@@ -1,0 +1,57 @@
+<h1 class="mb-4 text-center">My Reservations</h1>
+
+<%# Sent Reservations %>
+<h2 class="mb-3">Sent Reservations:</h2>
+<div class="row">
+  <% @sent_reservations.each do |reservation| %>
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <%= link_to reservation_path(reservation), class: 'card-link text-decoration-none text-dark' do %>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Status: <%= reservation.status %></h5>
+            <ul class="list-unstyled">
+              <li><strong>Petsitter:</strong> <%= reservation.pet_sitter.first_name.capitalize %> <%= reservation.pet_sitter.last_name.capitalize %></li>
+              <li><strong>Pet(s):</strong></li>
+              <% reservation.pet_reservations.each do |pet_reservation| %>
+                <li><%= pet_reservation.pet.name.capitalize %></li>
+              <% end %>
+              <li><strong>Start:</strong> <%= reservation.start_date %></li>
+              <li><strong>End:</strong> <%= reservation.end_date %></li>
+            </ul>
+            <%= link_to 'Cancel', reservation_path(reservation), 
+              data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
+              class: 'btn btn-danger mt-3 w-100' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<%# Received Reservations %>
+<h2 class="mb-3">Received Reservations:</h2>
+<div class="row">
+  <% @received_reservations.each do |reservation| %>
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <%= link_to reservation_path(reservation), class: 'card-link text-decoration-none text-dark' do %>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Status: <%= reservation.status %></h5>
+            <ul class="list-unstyled">
+              <li><strong>Pet Owner:</strong> <%= reservation.pet_owner.first_name.capitalize %> <%= reservation.pet_owner.last_name.capitalize %></li>
+              <li><strong>Pet(s):</strong></li>
+              <% reservation.pet_reservations.each do |pet_reservation| %>
+                <li><%= pet_reservation.pet.name.capitalize %></li>
+              <% end %>
+              <li><strong>Start:</strong> <%= reservation.start_date %></li>
+              <li><strong>End:</strong> <%= reservation.end_date %></li>
+            </ul>
+            <%= link_to 'Cancel', reservation_path(reservation), 
+              data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
+              class: 'btn btn-danger mt-3 w-100' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

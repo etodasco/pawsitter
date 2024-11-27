@@ -1,4 +1,17 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+  
+  def index
+  end
+
+  def show
+    @message = Message.find(params[:id])
+  end
+
+  def new 
+    @messages = Message.new
+  end
+
   def create
     @reservation = Reservation.find(params[:reservation_id])
     @message = Message.new(message_params)
@@ -15,6 +28,11 @@ class MessagesController < ApplicationController
     else
       render "?/show", status: :unprocessable_entity
     end
+
+    def show
+      @message = Message.find(params[:id])
+    end
+
   end
 
   private
