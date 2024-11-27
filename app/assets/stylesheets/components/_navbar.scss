@@ -1,3 +1,24 @@
+// Searchbar
+.input-group {
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.input-group .form-control {
+  border: none;
+}
+.input-group-text {
+  border: none;
+  background: #f8f9fa;
+}
+
+// Map
+.map {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15); /* Fixed color syntax */
+  border-radius: 15px; /* Adjust the value to your preference */
+  overflow: hidden; /* Ensures content doesn't spill over rounded edges */
+}
+
 /* Navbar items should take equal space */
 nav.navbar.fixed-bottom {
   position: fixed;
@@ -29,8 +50,3 @@ nav ul.navbar-nav li.nav-item a.nav-link {
 nav ul.navbar-nav li.nav-item a.nav-link:hover {
   color: #007bff; /* Hover color */
 }
-
-
-// .map {
-//   box-shadow: 0 .5rem 1rem rgba(black, .15);;
-// }

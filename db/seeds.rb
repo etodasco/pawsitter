@@ -18,7 +18,8 @@ ashton = User.create!(
   email: "ashton@test.ca",
   password: "test123",
   pet_sitter: true,
-  address: "5333 Casgrain Ave Suite 102, Montreal, Quebec H2T 1X3"
+  address: "5333 Casgrain Ave Suite 102, Montreal, Quebec H2T 1X3",
+  description: "Ashton is a 2 year old little boy who loves all animals. He would love to be a pet sitter!"
 )
 
 bella = Pet.create!(
