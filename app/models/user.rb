@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :pets, dependent: :destroy
   has_many :messages
+  has_one_attached :image
+  @pet_sitters = User.where(petsitter: true)
 
   has_many :sent_reservations, class_name: "Reservation", foreign_key: :pet_owner_id
   has_many :received_reservations, class_name: "Reservation", foreign_key: :pet_sitter_id
