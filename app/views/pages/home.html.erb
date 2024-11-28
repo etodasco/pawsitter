@@ -1,51 +1,52 @@
-
-<div class="d-flex justify-content-center align-items-center">
-  <h1>Pawsitter</h1>
+<!-- Header: Centered Title -->
+<div class="d-flex justify-content-center align-items-center mb-4">
+  <h1>🐾 Pawsitter 🐾</h1>
 </div>
 
-  <!-- Search Bar Section -->
-<%= form_with(url: pets_path, method: :get, local: true, class: "container") do |form| %>
-  <div class="input-group">
-    <!-- Address Input with Icon -->
-    <span class="input-group-text bg-light border-0"><i class="fas fa-map-marker-alt"></i></span>
-    <%= form.text_field :address, class: "form-control", placeholder: "Enter location" %>
+<!-- Search Bar Section -->
+<div class="container mb-4">
+  <%= form_with(url: pets_path, method: :get, local: true, class: "search-bar") do |form| %>
+    <div class="input-group">
+      <!-- Address Input with Icon -->
+      <span class="input-group-text bg-light border-0"><i class="fas fa-map-marker-alt"></i></span>
+      <%= form.text_field :address, class: "form-control", placeholder: "Enter location" %>
 
-    <!-- Start Date Input with Icon -->
-    <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
-    <%= form.date_field :start_date, class: "form-control", placeholder: "Start date" %>
+      <!-- Start Date Input with Icon -->
+      <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
+      <%= form.date_field :start_date, class: "form-control", placeholder: "Start date" %>
 
-    <!-- End Date Input with Icon -->
-    <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
-    <%= form.date_field :end_date, class: "form-control", placeholder: "End date" %>
+      <!-- End Date Input with Icon -->
+      <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
+      <%= form.date_field :end_date, class: "form-control", placeholder: "End date" %>
 
-    <!-- Search Button -->
-    <button type="submit" class="btn btn-primary">
-      <i class="fas fa-search"></i> Search
-    </button>
-  </div>
-<% end %>
-
-<%# Geocoder "Mapbox" %>
-<div class="text-center mb-0">
-  <h3>Pet Sitter Locations</h3>
+      <!-- Search Button -->
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  <% end %>
 </div>
 
-<div class="container d-flex justify-content-center align-items-center" style="height: 55vh;">
-  <div class="map w-100" style="max-width: 100%; height: 400px;"
+<!-- Section: Pet Sitter Locations -->
+<h3 class="text-center mb-4">Pet Sitter Locations</h3>
+
+<!-- Map Container (Centered with Flex) -->
+<div class="container d-flex justify-content-center align-items-center mb-4" style="height: 55vh;">
+  <div class="map w-100" style="max-width: 100%; height: 100%;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
 
-<!-- Album Section -->
+<!-- Section: Popular Sitters -->
 <section class="album py-5 bg-light">
   <div class="container">
     <h2 class="fw-light text-center mb-4">Popular Sitters</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <% @pet_sitters.each do |pet_sitter| %>
         <div class="col">
-          <!-- Make the card clickable -->
+          <!-- Card: Pet Sitter -->
           <%= link_to "#", class: "card shadow-sm position-relative text-decoration-none" do %>
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
               role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -72,8 +73,7 @@
   </div>
 </section>
 
-
-  <!-- Footer -->
+<!-- Footer -->
 <footer class="text-muted py-5 bg-light">
   <div class="container text-center">
     <p class="mb-1">&copy; 2024 PawSitter. All rights reserved.</p>
