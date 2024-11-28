@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :messages, only: [ :show, :destroy ]
   resources :reviews, only: [:show]
 
-get '/profile', to: 'users#show', as: 'profile'
+ # get '/profile', to: 'users#show', as: 'profile'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
