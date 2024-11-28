@@ -1,24 +1,49 @@
-.navbar-pawsitter {
-  justify-content: space-between;
-  background: white;
+// Searchbar
+.input-group {
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.input-group .form-control {
+  border: none;
+}
+.input-group-text {
+  border: none;
+  background: #f8f9fa;
 }
 
-.navbar-pawsitter .navbar-collapse {
-  flex-grow: 0;
+/* Navbar items should take equal space */
+nav.navbar.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1050; /* Make sure it is above other content */
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for the navbar */
 }
 
-.navbar-pawsitter .navbar-brand img {
-  width: 40px;
+nav ul.navbar-nav {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.avatar {
-  color: black;
+nav ul.navbar-nav li.nav-item {
+  flex: 1;
+  text-align: center;
 }
 
-.avatar :hover {
-  color: rgb(158, 158, 158);
+nav ul.navbar-nav li.nav-item a.nav-link {
+  color: rgb(0, 0, 0); /* Default text color */
+  font-size: 16px;
+  padding: 8px;
 }
 
-// .map {
-//   box-shadow: 0 .5rem 1rem rgba(black, .15);;
-// }
+nav ul.navbar-nav li.nav-item a.nav-link:hover {
+  color: #ffffff; /* Hover color */
+}
+
+#pawsitter {
+  color: rgb(107, 218, 255);
+}

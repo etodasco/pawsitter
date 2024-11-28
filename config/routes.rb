@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "pages#home"
+
   get "home", to: "pages#home"
   get "profile", to: "pages#profile", as: :profile
   get "pet_sitter_profile/:id", to: "pages#pet_sitter_profile", as: :pet_sitter_profile
@@ -16,13 +17,12 @@ Rails.application.routes.draw do
   end
 
   resources :reservations, only: [ :index, :show, :update, :destroy, :edit] do
-    resources :messages, only: [ :index, :create, :new]
+    resources :messages, only: [ :index, :create, :new ]
     resources :reviews, only: [:create]
   end
 
-  resources :messages, only: [ :show, :destroy,]
+  resources :messages, only: [ :show, :destroy ]
   resources :reviews, only: [:show]
-
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
