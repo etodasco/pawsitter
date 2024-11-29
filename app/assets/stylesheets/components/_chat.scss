@@ -1,3 +1,7 @@
+h3 {
+  color: rgb(107, 218, 255)
+}
+
 .chat {
 
     .message {
@@ -21,15 +25,41 @@
       width: fit-content;
       word-wrap: break-word;
     }
+
+    /* For received messages */
+    .message.received {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    /* For sent messages */
+    .message.sent {
+      align-items: flex-end;
+      text-align: right;
+    }
   
     .message.sent .message-content {
-      align-self: flex-start;
+      align-self: flex-end;
       background: $blue;
       color: $light-gray;
     }
   
     .message.received .message-content {
-      align-self: flex-end;
+      align-self: flex-start;
       background: $gray-200;
     }
+}
+
+.container.border {
+  border-radius: 15px; /* Adjust the radius value as needed */
+}
+
+#messages {
+  border-radius: 15px;
+  overflow: hidden; /* To prevent any content from spilling over */
+}
+
+/* Apply border-radius to the form input */
+.simple_form input, .simple_form textarea {
+  border-radius: 15px; /* Adjust the radius value as needed */
 }

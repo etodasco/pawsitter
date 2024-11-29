@@ -1,0 +1,11 @@
+<h1><%= @pet_sitter_profile.first_name %> <%= @pet_sitter_profile.last_name %></h1>
+<div class="user-info">
+  <h3>Personal informations</h3>
+  <p><strong>First Name :</strong> <%= @pet_sitter_profile.first_name %></p>
+  <p><strong>Last Name :</strong> <%= @pet_sitter_profile.last_name %></p>
+  <p><strong>Address :</strong> <%= @pet_sitter_profile.address %></p>
+  <p><strong>Email :</strong> <%= @pet_sitter_profile.email %></p>
+  <p><strong>Rating :</strong> <%= @pet_sitter_profile.average_rating %>/5</p>  <!--  moyenne des notes -->
+</div>
+
+<!--  <%= link_to "Back to Pet Sitters List", pet_sitters_path, class: "btn btn-secondary" %> -->

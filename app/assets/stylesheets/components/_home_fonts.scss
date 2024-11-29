@@ -1,0 +1,27 @@
+h1 {
+    color: rgb(107, 218, 255);
+    font-family: "Flavors", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 45px;
+}
+
+body {
+  background-color: white;
+}
+
+// Petsitter cards
+.card {
+    border-radius: 15px;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+
+  .card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  
+  .card:hover {
+    background-color: inherit;
+    color: black;
+  }

@@ -3,7 +3,8 @@ class ReservationsController < ApplicationController
   before_action :set_pet_sitter, except: [ :index, :show, :destroy ]
 
   def index
-    @reservations = current_user.sent_reservations
+    @sent_reservations = current_user.sent_reservations
+    @received_reservations = current_user.received_reservations
   end
 
   
