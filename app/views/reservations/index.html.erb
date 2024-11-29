@@ -10,7 +10,7 @@
           <div class="card-body">
             <h5 class="card-title mb-3">Status: <%= reservation.status %></h5>
             <ul class="list-unstyled">
-              <li><strong>Petsitter:</strong> <%= reservation.pet_sitter.first_name.capitalize %> <%= reservation.pet_sitter.last_name.capitalize %></li>
+              <li><strong>Petsitter:</strong> <%= reservation.pet_sitter.first_name.to_s.capitalize %> <%= reservation.pet_sitter.last_name.to_s.capitalize %></li>
               <li><strong>Pet(s):</strong></li>
               <% reservation.pet_reservations.each do |pet_reservation| %>
                 <li><%= pet_reservation.pet.name.capitalize %></li>
