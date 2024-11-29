@@ -47,3 +47,4 @@ private
 def pet_params
   params.require(:pet).permit(:name, :species, :description, :checklist)
 end
+end

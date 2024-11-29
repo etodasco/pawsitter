@@ -14,18 +14,7 @@
 
   <hr>
 
-  <div class="pets">
-    <h3>My Pets:</h3>
-    <% if @pets.any? %>
-      <ul>
-        <% @pets.each do |pet| %>
-          <li><%= link_to pet.name, pet_path(pet) %> - <%= pet.species.capitalize %></li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>You did not add a pet yet</p>
-    <% end %>
-  </div>
+
 
 <div class="pets">
   <h3>My Pets</h3>

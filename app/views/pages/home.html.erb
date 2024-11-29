@@ -9,6 +9,8 @@
     <!-- Address Input with Icon -->
     <span class="input-group-text bg-light border-0"><i class="fas fa-map-marker-alt"></i></span>
     <%= form.text_field :address, class: "form-control", placeholder: "Enter location" %>
+      </div>
+<% end %>
 
 <% if @users.nil? || @users.empty? %>
   <p>No users available.</p>
