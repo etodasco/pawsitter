@@ -19,7 +19,7 @@
 
   <% elsif current_user == @reservation.pet_sitter %>
     <!-- Received Reservation (Sitter) -->
-    <li><strong>Pet owner: <%= @reservation.pet_owner.first_name.capitalize %></strong></li>
+    <li><strong>Pet owner: <%= @reservation.pet_owner.nickname.capitalize %></strong></li>
     <% @reservation.pets.each do |pet| %>
       <li><strong>Pet name: <%= pet.name.capitalize %></strong></li>
       <li><strong>Species: <%= pet.species.capitalize %></strong></li>
