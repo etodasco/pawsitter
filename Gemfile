@@ -44,6 +44,8 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", git: "git@github.com:heartcombo/simple_form.git", branch: "main"
 gem "sassc-rails"
+gem 'pundit'
+
 
 group :development, :test do
  gem "dotenv-rails"
