@@ -1,8 +1,21 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-pawsitter">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <span class="fs-0">🐾 Pawsitter 🐾</span>
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+  
+    <!-- Left aligned logo -->
+    <div>
+      <%= link_to "#", class: "navbar-brand" do %>
+        <span id="pawsitter", class="fs-0">🐶 Pawsitter 🐱</span>
+      <% end %>
+    </div>
+
+    <!-- Right aligned welcome message -->
+    <% if user_signed_in? %>
+      <div class="text-end">
+        <h6 class="mb-0">Welcome <%= current_user.first_name.to_s.capitalize %> !</h6>
+      </div>
     <% end %>
+  </div>
+</div>
 
 
     <!-- Add Font Awesome CDN -->
@@ -52,7 +65,7 @@
     </li>
     <!-- Navbar User Button -->
     <li class="nav-item d-flex flex-column align-items-center">
-      <%= link_to "#", class: 'nav-link text-center' do %>
+      <%= link_to profile_path, class: 'nav-link text-center' do %>
         <i class="fas fa-user fa-lg"></i>
         <p class="mb-0 fs-6">User Profile</p>
       <% end %>
