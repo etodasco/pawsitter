@@ -9,7 +9,7 @@
 
   <% if current_user == @reservation.pet_owner %>
     <!-- Sent Reservation (Owner) -->
-    <li><strong>Pet sitter: <%= @reservation.pet_sitter.first_name.capitalize %></strong></li>
+    <li><strong>Pet sitter: <%= @reservation.pet_sitter.first_name.to_s.capitalize %></strong></li>
     <% @reservation.pets.each do |pet| %>
       <li><strong>Pet name: <%= pet.name.capitalize %></strong></li>
       <li><strong>Species: <%= pet.species.capitalize %></strong></li>
