@@ -30,18 +30,21 @@
 <!-- Section: Pet Sitter Locations -->
 <h3 class="text-center mb-4">Pet Sitter Locations</h3>
 
-<!-- Map Container (Centered with Flex) -->
-<div class="container d-flex justify-content-center align-items-center mb-4" style="height: 55vh;">
-  <div class="map w-100" style="max-width: 100%; height: 100%;"
+<!-- Map Container -->
+<div class="container-fluid d-flex justify-content-center align-items-center mb-4" style="height: 55vh;">
+  <div 
+    class="map flex-grow-1" 
+    style="height: 100%;" 
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
 
+
 <!-- Section: Popular Sitters -->
-<section class="album py-5 bg-light">
-  <div class="container">
+<section class="album py-5">
+  <div id="album" class="container">
     <h2 class="fw-light text-center mb-4">Popular Sitters</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <% @pet_sitters.each do |pet_sitter| %>
@@ -78,7 +81,7 @@
 </section>
 
 <!-- Footer -->
-<footer class="text-muted py-5 bg-light">
+<footer class="text-muted py-5">
   <div class="container text-center">
     <p class="mb-1">&copy; 2024 PawSitter. All rights reserved.</p>
   </div>
