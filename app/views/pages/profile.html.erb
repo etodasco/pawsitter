@@ -1,6 +1,6 @@
 <div class="contianer">
 
-  <h1><%= @user.nickname.to_s.capitalize || @user.first_name %>'s Profile Page: </h1>
+  <h1><%= @user.nickname.to_s.capitalize || @user.first_name.to_s.capitalize %>'s Profile Page: </h1>
 
   <div class="user-info">
     <h3>Personal Information</h3>
@@ -36,7 +36,7 @@
       <ul>
         <% @reservations_as_owner.each do |reservation| %>
           <li>
-            <strong>Reservation :</strong> <%= reservation.status.capitalize %>
+            <strong>Reservation :</strong> <%= reservation.status.to_s.capitalize %>
             (<%= link_to "Details", reservation_path(reservation) %>) <!--  détails de la réservation -->
           </li>
         <% end %>
