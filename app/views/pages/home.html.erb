@@ -48,20 +48,24 @@
         <div class="col">
           <!-- Card: Pet Sitter -->
           <%= link_to "#", class: "card shadow-sm position-relative text-decoration-none" do %>
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-              role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#55595c"></rect>
-            </svg>
+            <% if pet_sitter.image.attached? %>
+              <%= image_tag pet_sitter.image, class: "card-img-top", alt: "#{pet_sitter.nickname} photo" %>
+            <% else %>
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"></rect>
+              </svg>
+            <% end %>
             <div class="position-absolute top-0 end-0 m-2 bg-light text-dark rounded px-2 py-1">
               <%= pet_sitter.average_rating || "No Rating" %>
               <i class="bi bi-star-fill"></i>
             </div>
             <div class="card-body">
               <h5 class="card-title">
-                <%= pet_sitter.first_name.to_s.capitalize %> <%= pet_sitter.last_name.to_s.capitalize %>
+                <%= pet_sitter.nickname.capitalize %>
               </h5>
-              <p class="mb-1"><strong>Description</strong>: <%= pet_sitter.description %></p>
+              <p class="mb-1"><strong>Description</strong>: <%= pet_sitter.description.presence || "No description available" %></p>
               <div class="d-flex justify-content-center">
                 <span class="btn btn-sm btn-outline-secondary">View Sitter</span>
               </div>
@@ -79,4 +83,3 @@
     <p class="mb-1">&copy; 2024 PawSitter. All rights reserved.</p>
   </div>
 </footer>
-

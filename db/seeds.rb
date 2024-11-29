@@ -14,7 +14,7 @@ chris = User.create!(nickname: "chris", email: "chris@test.ca", password: "test1
 chris.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/chris.jpg")), filename: "chris.jpg")
 fatima = User.create!(nickname: "fatima", email: "fatima@test.ca", password: "test123", pet_sitter: true, description: "Experienced in caring for all kinds of pets, I treat them like family!")
 fatima.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/fatima.jpg")), filename: "fatima.jpg")
-xiang_wei = User.create!(nickname: "xiang wei22", email: "xiangwei_sitter@test.ca", password: "test123", pet_sitter: true, description: "Passionate about animals, I offer personalized care for your furry friends.")
+xiang_wei = User.create!(nickname: "xiang wei", email: "xiangwei_sitter@test.ca", password: "test123", pet_sitter: true, description: "Passionate about animals, I offer personalized care for your furry friends.")
 xiang_wei.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/xiangwei.jpg")), filename: "xiangwei.jpg")
 
 # Create Pets
