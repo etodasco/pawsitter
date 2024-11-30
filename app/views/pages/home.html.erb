@@ -26,33 +26,13 @@
       </button>
     </div>
   <% end %>
-  <script>
-  // Initialize Mapbox
-  mapboxgl.accessToken = '<%= ENV["MAPBOX_API_KEY"] %>';
-
-  // Set up the Geocoder
-  var geocoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    mapboxgl: mapboxgl
-  });
-
-  // Add the geocoder to the address input field
-  var inputField = document.getElementById('address-input');
-  geocoder.onAdd(map).on('result', function(e) {
-    // After a result is selected, you can use e.result to access the address
-    inputField.value = e.result.place_name;
-  });
-
-  inputField.appendChild(geocoder.onAdd(map)); // This attaches it to the input field
-</script>
 </div>
 
-<h3 class="text-center mb-4"></h3>
+<%# <h3 class="text-center mb-4"></h3> %>
 
 <!-- Map Container (Centered with Flex) -->
-<div class="container d-flex justify-content-center align-items-center mb-4" style="height: 55vh;">
-  <div class="map w-100" style="max-width: 100%; height: 100%;"=======
-<!-- Map Container -->
+<%# <div class="container d-flex justify-content-center align-items-center mb-4" style="height: 55vh;"> %>
+<!-- >  <div class="map w-100" style="max-width: 100%; height: 100%;" > --><!-- Map Container -->
 <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1rem; height: 55vh;">
   <div
     class="map"
@@ -100,40 +80,10 @@
         <% end %>
       <% else %>
         <p class="text-center">No pet sitters found for your search criteria.</p>
-      
-<section class="album" style="padding: 2rem 0;">
-  <div id="album" style="max-width: 1200px; margin: 0 auto;">
-    <h2 style="text-align: center; font-weight: 300; margin-bottom: 2rem;">Popular Sitters</h2>
-    <div class="row" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
-      <% @pet_sitters.each do |pet_sitter| %>
-        <div class="card" style="flex: 1 1 calc(33.333% - 1rem); max-width: calc(33.333% - 1rem); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 8px; overflow: hidden; background: white; display: flex; flex-direction: column;">
-          <!-- Card: Pet Sitter -->
-          <%= link_to "#", style: "text-decoration: none; color: inherit;" do %>
-            <% if pet_sitter.image.attached? %>
-              <%= image_tag pet_sitter.image, style: "width: 100%; height: 150px; object-fit: cover;", alt: "#{pet_sitter.nickname} photo" %>
-            <% else %>
-              <svg style="width: 100%; height: 150px; background-color: #55595c; display: block;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-              </svg>
-            <% end %>
-            <div style="position: absolute; top: 0.5rem; right: 0.5rem; background: #f8f9fa; color: #333; padding: 0.25rem 0.5rem; font-size: 0.9rem; border-radius: 4px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
-              <%= pet_sitter.average_rating || "No Rating" %>
-              <i>&#9733;</i>
-            </div>
-            <div style="padding: 1rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
-              <h5 style="font-size: 1rem; margin-bottom: 0.5rem;">
-                <strong><%= pet_sitter.nickname.to_s.capitalize %></strong>
-              </h5>
-              <p style="font-size: 0.9rem; margin-bottom: 1rem;"><%= pet_sitter.description.presence || "No description available" %></p>
-            </div>
-          <% end %>
-        </div>
       <% end %>
-    </div> <!-- End of .row -->
-  </div> <!-- End of .container -->
+    </div>
+  </div>
 </section>
-
 <!-- Footer -->
 <footer class="text-muted py-5">
   <div class="container text-center">
