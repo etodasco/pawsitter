@@ -21,10 +21,17 @@
                 <li><strong>End:</strong> <%= reservation.end_date %></li>
               </ul>
                 <div class="d-flex justify-content-between align-items-center mt-3">
-                  <%= link_to 'Cancel Request', reservation_path(reservation), 
-                    data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
-                    class: 'btn btn-danger btn-sm ms-auto' %>
+                  <% if reservation.status == "accepted" %>
+                  <p>Your reservation was <strong><%= reservation.status %>!</strong>
+                  <% elsif reservation.status == "declined" %>
+                  <p>Your reservation status was <strong><%= reservation.status %></strong>. You can contact <strong><%= reservation.pet_sitter.nickname.to_s.capitalize %></strong> for more information!</p>
+                  <% end %>
                 </div>
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                      <%= link_to 'Cancel Request', reservation_path(reservation), 
+                        data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
+                        class: 'btn btn-danger btn-sm ms-auto' %>
+                  </div>
             </div>
           </div>
         <% end %>
@@ -46,19 +53,21 @@
                   <li><strong>Pet Owner:</strong> <%= reservation.pet_owner.nickname.capitalize %></li>
                   <li><strong>Pet(s):</strong></li>
                   <% reservation.pet_reservations.each do |pet_reservation| %>
-                    <li><%= pet_reservation.pet.name.capitalize %></li>
+                  <%= pet_reservation.pet.name.capitalize %>
                   <% end %>
                   <li><strong>Start:</strong> <%= reservation.start_date %></li>
                   <li><strong>End:</strong> <%= reservation.end_date %></li>
                 </ul>
-                <% if reservation.status == "pending" %>
-                  <%= link_to 'Accept', reservation_path(reservation, status: "accepted"), 
-                    data: { turbo_method: :patch, turbo_confirm: 'Are you sure you want to accept this reservation?' }, 
-                    class: 'btn btn-danger mt-3 w-100' %>
-                  <%= link_to 'Decline', reservation_path(reservation, status: "declined"), 
-                    data: { turbo_method: :patch, turbo_confirm: 'Are you sure you want to decline this reservation?' }, 
-                    class: 'btn btn-danger mt-3 w-100' %>
-                <% end %>
+                <div class="d-flex justify-content-end align-items-center mt-3">
+                  <% if reservation.status == "pending" %>
+                    <%= link_to 'Accept', reservation_path(reservation, status: "accepted"), 
+                      data: { turbo_method: :patch, turbo_confirm: 'Are you sure you want to accept this reservation?' }, 
+                      class: 'btn btn-success mt-3 me-1' %>
+                    <%= link_to 'Decline', reservation_path(reservation, status: "declined"), 
+                      data: { turbo_method: :patch, turbo_confirm: 'Are you sure you want to decline this reservation?' }, 
+                      class: 'btn btn-danger mt-3' %>
+                  <% end %>
+                </div>
               </div>
             </div>
           <% end %>

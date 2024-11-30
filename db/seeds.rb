@@ -5,7 +5,7 @@ User.destroy_all
 # Create Users
 puts "Creating Users..."
 eric = User.create!(nickname: "eric", email: "eric@test.ca", password: "test123", pet_sitter: true)
-ashton = User.create!(nickname: "ashton", email: "ashton@test.ca", password: "test123", pet_sitter: false)
+ashton = User.create!(nickname: "ashton", email: "ashton@test.ca", password: "test123", pet_sitter: true)
 alexa = User.create!(nickname: "alexa", address: "5333 Casgrain Ave Suite 102, Montreal, Quebec H2T 1X3", email: "alexa@test.ca", password: "test123", pet_sitter: true, description: "Experienced sitter with a love for dogs and cats.")
 alexa.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/alexa.jpg")), filename: "alexa.jpg")
 maria = User.create!(nickname: "maria", address: "3800 Queen Mary Rd, Montreal, Quebec H3V 1H6", email: "maria@test.ca", password: "test123", pet_sitter: true, description: "Professional pet sitter, happy to care for your pets while you're away!")
@@ -68,7 +68,7 @@ Reservation.create!(
   start_date: Date.today + 2.days,
   end_date: Date.today + 7.days,
   pet_owner: eric,
-  pet_sitter: chris,
+  pet_sitter: ashton,
   status: "pending",
   pets: [luna]
 )
