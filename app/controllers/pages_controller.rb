@@ -1,9 +1,23 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [ :home ]
-
+  
   def home
-    # @users = User.all
     @pet_sitters = User.where(pet_sitter: true)
+
+    # Filter by address
+    if params[:address].present?
+      @pet_sitters = @pet_sitters.where("address ILIKE ?", "%#{params[:address]}%")
+    end
+
+    # Filter by availability
+    if params[:start_date].present? && params[:end_date].present?
+      start_date = Date.parse(params[:start_date])
+      end_date = Date.parse(params[:end_date])
+      @pet_sitters = @pet_sitters.joins(:reservations).where.not(
+        reservations: { start_date: start_date..end_date, end_date: start_date..end_date }
+      )
+    end
+
     # Geocode users for map markers
     @markers = @pet_sitters.geocoded.map do |pet_sitter|
       {
