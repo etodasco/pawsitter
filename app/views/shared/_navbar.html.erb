@@ -55,14 +55,6 @@
         <p class="mb-0 fs-6">Reservations</p>
       <% end %>
     </li>
-    <!-- Navbar Mail Button-->
-    <li class="nav-item d-flex flex-column align-items-center">
-      <% if @reservation %>
-        <%= link_to reservations_path(@reservation), class: 'nav-link text-center' do %>
-          <i class="fas fa-envelope fa-lg"></i>
-        <% end %>
-      <% end %>
-    </li>
     <!-- Navbar User Button -->
     <li class="nav-item d-flex flex-column align-items-center">
       <%= link_to profile_path, class: 'nav-link text-center' do %>
