@@ -74,6 +74,15 @@ Reservation.create!(
 )
 
 Reservation.create!(
+  start_date: Date.today + 2.days,
+  end_date: Date.today + 5.days,
+  pet_owner: eric,
+  pet_sitter: eric,
+  status: "pending",
+  pets: [luna]
+)
+
+Reservation.create!(
   start_date: Date.today + 3.days,
   end_date: Date.today + 8.days,
   pet_owner: alexa,

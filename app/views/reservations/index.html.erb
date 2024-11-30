@@ -20,9 +20,11 @@
                 <li><strong>Start:</strong> <%= reservation.start_date %></li>
                 <li><strong>End:</strong> <%= reservation.end_date %></li>
               </ul>
-              <%= link_to 'Cancel', reservation_path(reservation), 
-                data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
-                class: 'btn btn-danger mt-3 w-100' %>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <%= link_to 'Cancel Request', reservation_path(reservation), 
+                    data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
+                    class: 'btn btn-danger btn-sm ms-auto' %>
+                </div>
             </div>
           </div>
         <% end %>

@@ -5,7 +5,7 @@
 <div class="container">
   <ul>
     <!-- Display reservation status -->
-    <h6><li><strong>Reservation Status: <%= @reservation.status %></strong></li></h6>
+    <h5><strong>Reservation Status: <%= @reservation.status %></strong></h5>
 
   <% if current_user == @reservation.pet_owner %>
     <!-- Sent Reservation (Owner) -->
