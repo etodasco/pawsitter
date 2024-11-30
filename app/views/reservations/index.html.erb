@@ -22,9 +22,9 @@
               </ul>
                 <div class="d-flex justify-content-between align-items-center mt-3">
                   <% if reservation.status == "accepted" %>
-                  <p>Your reservation was <strong><%= reservation.status %>!</strong>
+                  <p>Your reservation request was <strong><%= reservation.status %>!</strong>
                   <% elsif reservation.status == "declined" %>
-                  <p>Your reservation status was <strong><%= reservation.status %></strong>. You can contact <strong><%= reservation.pet_sitter.nickname.to_s.capitalize %></strong> for more information!</p>
+                  <p>Your reservation request was <strong><%= reservation.status %></strong>. You can contact <strong><%= reservation.pet_sitter.nickname.to_s.capitalize %></strong> for more information!</p>
                   <% end %>
                 </div>
                   <div class="d-flex justify-content-between align-items-center mt-3">
