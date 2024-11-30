@@ -31,30 +31,37 @@
   </div>
 
   <%# Received Reservations %>
-  <h2 class="mb-1">Received Reservations:</h2>
-  <div class="row">
-    <% @received_reservations.each do |reservation| %>
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <%= link_to reservation_path(reservation), class: 'card-link text-decoration-none text-dark' do %>
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title mb-3">Status: <%= reservation.status %></h5>
-              <ul class="list-unstyled">
-                <li><strong>Pet Owner:</strong> <%= reservation.pet_owner.nickname.capitalize %></li>
-                <li><strong>Pet(s):</strong></li>
-                <% reservation.pet_reservations.each do |pet_reservation| %>
-                  <li><%= pet_reservation.pet.name.capitalize %></li>
+  <% if current_user.pet_sitter %>
+    <h2 class="mb-1">Received Reservations:</h2>
+    <div class="row">
+      <% @received_reservations.each do |reservation| %>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <%= link_to reservation_path(reservation), class: 'card-link text-decoration-none text-dark' do %>
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title mb-3">Status: <%= reservation.status %></h5>
+                <ul class="list-unstyled">
+                  <li><strong>Pet Owner:</strong> <%= reservation.pet_owner.nickname.capitalize %></li>
+                  <li><strong>Pet(s):</strong></li>
+                  <% reservation.pet_reservations.each do |pet_reservation| %>
+                    <li><%= pet_reservation.pet.name.capitalize %></li>
+                  <% end %>
+                  <li><strong>Start:</strong> <%= reservation.start_date %></li>
+                  <li><strong>End:</strong> <%= reservation.end_date %></li>
+                </ul>
+                <% if reservation.status == "pending" %>
+                  <%= link_to 'Accept', reservation_path(reservation, status: "accepted"), 
+                    data: { turbo_method: :patch, turbo_confirm: 'Are you sure you want to accept this reservation?' }, 
+                    class: 'btn btn-danger mt-3 w-100' %>
+                  <%= link_to 'Decline', reservation_path(reservation, status: "declined"), 
+                    data: { turbo_method: :patch, turbo_confirm: 'Are you sure you want to decline this reservation?' }, 
+                    class: 'btn btn-danger mt-3 w-100' %>
                 <% end %>
-                <li><strong>Start:</strong> <%= reservation.start_date %></li>
-                <li><strong>End:</strong> <%= reservation.end_date %></li>
-              </ul>
-              <%= link_to 'Cancel', reservation_path(reservation), 
-                data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
-                class: 'btn btn-danger mt-3 w-100' %>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
