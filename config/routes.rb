@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "home", to: "pages#home"
   get "profile", to: "pages#profile", as: :profile
   get "pet_sitter_profile/:id", to: "pages#pet_sitter_profile", as: :pet_sitter_profile
+  get '/search_pet_sitters', to: 'pages#pet_sitters', as: 'search_pet_sitters'
 
   resources :pets, only: [ :new, :create, :show ]
 
