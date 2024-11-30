@@ -5,7 +5,7 @@
 <div class="container">
   <ul>
     <!-- Display reservation status -->
-    <h6><li><strong>Reservation Status: <%= @reservation.status %></strong></li></h6>
+    <h5><strong>Reservation Status: <%= @reservation.status %></strong></h5>
 
   <% if current_user == @reservation.pet_owner %>
     <!-- Sent Reservation (Owner) -->
@@ -19,7 +19,7 @@
 
   <% elsif current_user == @reservation.pet_sitter %>
     <!-- Received Reservation (Sitter) -->
-    <li><strong>Pet owner: <%= @reservation.pet_owner.first_name.capitalize %></strong></li>
+    <li><strong>Pet owner: <%= @reservation.pet_owner.nickname.capitalize %></strong></li>
     <% @reservation.pets.each do |pet| %>
       <li><strong>Pet name: <%= pet.name.capitalize %></strong></li>
       <li><strong>Species: <%= pet.species.capitalize %></strong></li>

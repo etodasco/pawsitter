@@ -4,8 +4,8 @@ User.destroy_all
 
 # Create Users
 puts "Creating Users..."
-eric = User.create!(nickname: "eric", email: "eric@test.ca", password: "test123", pet_sitter: false)
-ashton = User.create!(nickname: "ashton", email: "ashton@test.ca", password: "test123", pet_sitter: false)
+eric = User.create!(nickname: "eric", email: "eric@test.ca", password: "test123", pet_sitter: true)
+ashton = User.create!(nickname: "ashton", email: "ashton@test.ca", password: "test123", pet_sitter: true)
 alexa = User.create!(nickname: "alexa", address: "5333 Casgrain Ave Suite 102, Montreal, Quebec H2T 1X3", email: "alexa@test.ca", password: "test123", pet_sitter: true, description: "Experienced sitter with a love for dogs and cats.")
 alexa.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/alexa.jpg")), filename: "alexa.jpg")
 maria = User.create!(nickname: "maria", address: "3800 Queen Mary Rd, Montreal, Quebec H3V 1H6", email: "maria@test.ca", password: "test123", pet_sitter: true, description: "Professional pet sitter, happy to care for your pets while you're away!")
@@ -51,6 +51,7 @@ Reservation.create!(
   end_date: Date.today + 5.days,
   pet_owner: chris,
   pet_sitter: alexa,
+  status: "pending",
   pets: [bella]
 )
 
@@ -59,6 +60,7 @@ Reservation.create!(
   end_date: Date.today + 6.days,
   pet_owner: fatima,
   pet_sitter: maria,
+  status: "pending",
   pets: [rocky]
 )
 
@@ -66,7 +68,17 @@ Reservation.create!(
   start_date: Date.today + 2.days,
   end_date: Date.today + 7.days,
   pet_owner: eric,
-  pet_sitter: chris,
+  pet_sitter: ashton,
+  status: "pending",
+  pets: [luna]
+)
+
+Reservation.create!(
+  start_date: Date.today + 2.days,
+  end_date: Date.today + 5.days,
+  pet_owner: eric,
+  pet_sitter: eric,
+  status: "pending",
   pets: [luna]
 )
 
@@ -75,6 +87,7 @@ Reservation.create!(
   end_date: Date.today + 8.days,
   pet_owner: alexa,
   pet_sitter: maria,
+  status: "pending",
   pets: [buddy]
 )
 
@@ -83,6 +96,7 @@ Reservation.create!(
   end_date: Date.today + 9.days,
   pet_owner: xiang_wei,
   pet_sitter: maria,
+  status: "pending",
   pets: [simba]
 )
 

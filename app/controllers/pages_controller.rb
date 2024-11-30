@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [ :home ]
+  
   def home
     @pet_sitters = User.where(pet_sitter: true)
 
@@ -45,4 +46,9 @@ class PagesController < ApplicationController
     @reservations_as_petsitter = @pet_sitter_profile.received_reservations
 
   end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
 end

@@ -13,25 +13,11 @@
 @import "components/index";
 @import "pages/index";
 
-
-
 .custom-title {
   font-size: 5rem;  /* You can adjust this value */
   font-weight: bold; /* Optional for making it bold */
   color: #a3c4f3;        /* Pale blue color */
   font-family: 'Impact'
-}
-
-/* This will make the body stretch to the full height of the page */
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-/* Make the content area take all available space except the navbar */
-.container {
-  min-height: 100%;
-  padding-bottom: 60px; /* Ensure there is space for the navbar */
 }
 
 /* Navbar styling */

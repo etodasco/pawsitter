@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_pet_sitter, except: [ :index, :show, :destroy ]
+  before_action :set_pet_sitter, except: [ :index, :show, :update, :destroy ]
 
   def index
     @sent_reservations = current_user.sent_reservations
@@ -38,6 +38,12 @@ class ReservationsController < ApplicationController
    else
       redirect_to reservations_path, alert: "Failed to delete reservation."
     end
+  end
+
+  def update
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(status: params[:status])
+    redirect_to reservations_path, notice: "Reservation updated successfully"
   end
 
   private

@@ -1,4 +1,4 @@
-<div class="contianer">
+<div class="contianer mb-5">
 
   <h1><%= @user.nickname.to_s.capitalize || @user.first_name.to_s.capitalize %>'s Profile Page: </h1>
 
@@ -14,20 +14,21 @@
 
   <hr>
 
-  <div class="pets">
-    <h3>My Pets:</h3>
-    <% if @pets.any? %>
-      <ul>
-        <% @pets.each do |pet| %>
-          <li><%= link_to pet.name, pet_path(pet) %> - <%= pet.species.capitalize %></li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>You did not add a pet yet</p>
-    <% end %>
-  </div>
 
-  <hr>
+
+<div class="pets">
+  <h3>My Pets</h3>
+  <% if @pets.any? %>
+    <ul>
+      <% @pets.each do |pet| %>
+        <li><%= link_to pet.name, pet_path(pet) %> - <%= pet.species.capitalize %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>You did not add a pet yet</p>
+  <% end %>
+  <%= link_to "Add a New Pet", new_pet_path %> <!--  ajouter un nouveau pet -->
+</div>
 
   <div class="reservations">
     <h3>My Reservations:</h3>
@@ -53,7 +54,7 @@
       <ul>
         <% @reservations_as_petsitter.each do |reservation| %>
           <li>
-            <strong>Reservation :</strong> <%= reservation.status.capitalize %>
+            <strong>Reservation :</strong> <%= reservation.status.to_s.capitalize %>
             (<%= link_to "Détails", reservation_path(reservation) %>)
           </li>
         <% end %>

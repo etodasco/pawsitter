@@ -1,6 +1,30 @@
-// Map
-.map {
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15); /* Fixed color syntax */
-    border-radius: 15px; /* Adjust the value to your preference */
-    overflow: hidden; /* Ensures content doesn't spill over rounded edges */
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    height: 40vh; /* Default height for larger screens */
+    width: 70vw; /* Default width for larger screens */
+  }
+  
+  .map {
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+  
+  @media (max-width: 768px) {
+    .map-container {
+      height: 30vh; /* Smaller height for tablets */
+      width: 90vw; /* Smaller width for tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .map-container {
+      height: 25vh; /* Even smaller height for phones */
+      width: 95vw; /* Even smaller width for phones */
+    }
   }
