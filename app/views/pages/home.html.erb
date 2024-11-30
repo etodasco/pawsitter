@@ -29,9 +29,9 @@
 
 <!-- Map Container -->
 <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1rem; height: 55vh;">
-  <div 
-    class="map" 
-    style="flex-grow: 1; height: 100%;" 
+  <div
+    class="map"
+    style="flex-grow: 1; height: 100%;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">

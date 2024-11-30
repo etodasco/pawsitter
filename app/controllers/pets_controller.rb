@@ -17,7 +17,7 @@ class PetsController < ApplicationController
   def create
     @pet = current_user.pets.new(pet_params)
     if @pet.save
-      redirect_to profile_path
+      redirect_to pet_path(@pet), notice: "Pet was successfully created !"
     else
       render :new
     end
@@ -33,7 +33,7 @@ class PetsController < ApplicationController
 
   def destroy
     @pet.destroy
-    redirect_to pets_path
+    redirect_to pets_path, notice: "Profile was deleted !"
   end
 
   private
@@ -43,6 +43,6 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :species, :breed, :age, :size, :description, :price, :photo, :image)
+    params.require(:pet).permit(:name, :species, :description, :checklist, :image)
   end
 end
