@@ -59,7 +59,9 @@
   <% else %>
     <p class="text-muted">You did not add a pet yet.</p>
   <% end %>
-  <%= link_to "Add a New Pet", new_pet_path, class: "btn btn-success mt-2" %>
+  <%= link_to '<i class="fas fa-paw"></i> Add a New Pet'.html_safe, new_pet_path, class: "btn btn-primary mt-2" %>
+
+
 </div>
 
 
