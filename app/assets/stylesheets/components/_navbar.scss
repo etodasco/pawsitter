@@ -1,3 +1,7 @@
+.navbar {
+  z-index: 9999; /* To ensure the navbar is above content */
+}
+
 // Searchbar
 .input-group {
   border-radius: 30px;
