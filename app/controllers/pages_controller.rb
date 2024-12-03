@@ -41,15 +41,35 @@ class PagesController < ApplicationController
     @reservations_as_petsitter = @user.received_reservations
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to profile_path, notice: "Profile updated successfully."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def pet_sitter_profile
     @pet_sitter_profile = User.find(params[:id])
     @reservations_as_petsitter = @pet_sitter_profile.received_reservations
-
   end
 
   def show
     @user = User.find(params[:id])
     @pet_sitter_profile = Pet_sitter.find(params[:id])
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :address, :nickname, :email, :password, :password_confirmation)
+  end
+
+
 
 end

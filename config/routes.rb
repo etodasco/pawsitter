@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   resources :pets, only: [ :new, :create, :show, :destroy]
 
   resources :users, as: "pet_sitter", path: "pet_sitters" do
+    collection do
+      get :profile
+      get :edit_profile
+      patch :update_profile
+    end
     resources :reservations, only: [ :new, :create ]
   end
 
