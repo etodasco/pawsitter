@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "pet_sitter_profile/:id", to: "pages#pet_sitter_profile", as: :pet_sitter_profile
   get '/search_pet_sitters', to: 'pages#pet_sitters', as: 'search_pet_sitters'
 
-  resources :pets, only: [ :new, :create, :show ]
+  resources :pets, only: [ :new, :create, :show, :destroy]
 
   resources :users, as: "pet_sitter", path: "pet_sitters" do
     resources :reservations, only: [ :new, :create ]
