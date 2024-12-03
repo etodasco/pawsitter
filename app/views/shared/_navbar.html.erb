@@ -1,17 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-pawsitter">
   <div class="container-fluid d-flex justify-content-between align-items-center">
-  
-    <!-- Left aligned logo -->
-    <div>
-      <%= link_to "#", class: "navbar-brand" do %>
-        <span id="pawsitter", class="fs-0">🐶 Pawsitter 🐱</span>
-      <% end %>
-    </div>
-
-    <!-- Right aligned welcome message -->
+    <!-- Right-aligned welcome message -->
     <% if user_signed_in? %>
-      <div class="text-end">
-        <h6 class="mb-0">Welcome <%= current_user.nickname.to_s.capitalize %> !</h6>
+      <div class="ms-auto text-end">
+        <h5 class="mb-0">Welcome <%= current_user.nickname.to_s.capitalize %> !</h5>
       </div>
     <% end %>
   </div>
@@ -40,34 +32,36 @@
 
 <!-- Navbar at bottom -->
   <!-- Navbar Home Button -->
-<nav class="navbar fixed-bottom navbar-light bg-light">
-  <ul class="navbar-nav w-100 d-flex flex-row justify-content-around align-items-center mb-0 py-2">
-    <li class="nav-item d-flex flex-column align-items-center">
-      <%= link_to root_path, class: 'nav-link text-center' do %>
-        <i class="fas fa-home fa-lg"></i>
-        <p class="mb-0 fs-6">Home</p>
-      <% end %>
-    </li>
-    <!-- Navbar Reservations Button -->
-    <li class="nav-item d-flex flex-column align-items-center">
-      <%= link_to reservations_path, class: 'nav-link text-center' do %>
-        <i class="fas fa-calendar-alt fa-lg"></i>
-        <p class="mb-0 fs-6">Reservations</p>
-      <% end %>
-    </li>
-    <!-- Navbar User Button -->
-    <li class="nav-item d-flex flex-column align-items-center">
-      <%= link_to profile_path, class: 'nav-link text-center' do %>
-        <i class="fas fa-user fa-lg"></i>
-        <p class="mb-0 fs-6">User Profile</p>
-      <% end %>
-    </li>
-    <!-- Navbar Log Out Icon -->
-    <li class="nav-item d-flex flex-column align-items-center">
-      <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-center' do %>
-        <i class="fas fa-sign-out-alt fa-lg"></i>
-        <p class="mb-0 fs-6">Logout</p>
-      <% end %>
-    </li>
-  </ul>
-</nav>
+<% if user_signed_in? %>
+  <nav class="navbar fixed-bottom navbar-light bg-light">
+    <ul class="navbar-nav w-100 d-flex flex-row justify-content-around align-items-center mb-0 py-2">
+      <li class="nav-item d-flex flex-column align-items-center">
+        <%= link_to root_path, class: 'nav-link text-center' do %>
+          <i class="fas fa-home fa-lg"></i>
+          <p class="mb-0 fs-6">Home</p>
+        <% end %>
+      </li>
+      <!-- Navbar Reservations Button -->
+      <li class="nav-item d-flex flex-column align-items-center">
+        <%= link_to reservations_path, class: 'nav-link text-center' do %>
+          <i class="fas fa-calendar-alt fa-lg"></i>
+          <p class="mb-0 fs-6">Reservations</p>
+        <% end %>
+      </li>
+      <!-- Navbar User Button -->
+      <li class="nav-item d-flex flex-column align-items-center">
+        <%= link_to profile_path, class: 'nav-link text-center' do %>
+          <i class="fas fa-user fa-lg"></i>
+          <p class="mb-0 fs-6">User Profile</p>
+        <% end %>
+      </li>
+      <!-- Navbar Log Out Icon -->
+      <li class="nav-item d-flex flex-column align-items-center">
+        <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-center' do %>
+          <i class="fas fa-sign-out-alt fa-lg"></i>
+          <p class="mb-0 fs-6">Logout</p>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+<% end %>

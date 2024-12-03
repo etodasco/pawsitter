@@ -1,4 +1,8 @@
-<div class="container">
+<div class="d-flex justify-content-center align-items-center mb-4">
+  <h1>🐾 Pawsitter 🐾</h1>
+</div>
+
+<div class="container w-70">
   <h3>Log in: </h3>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -13,9 +17,9 @@
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
 
-    <div class="form-actions mb-5">
-      <%= link_to "Signup", new_user_registration_path, class: "btn btn-success" %>
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <div class="form-actions">
+      <%= link_to "Signup", new_user_registration_path, class: "btn btn-success mb-1" %>
+      <%= f.submit "Log in", class: "btn btn-primary mb-1" %>
       <%= link_to "Forgot your password?", new_user_password_path, class: "btn btn-danger" %>
     </div>
   <% end %>
