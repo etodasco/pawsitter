@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [ :home ]
-  
+
   def home
     @pet_sitters = User.where(pet_sitter: true)
 
@@ -49,6 +49,7 @@ class PagesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @pet_sitter_profile = Pet_sitter.find(params[:id])
   end
 
 end
