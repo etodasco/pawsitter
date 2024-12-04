@@ -27,12 +27,13 @@
 
   <!-- Image -->
   <div class="form-group">
-    <%= form.label :image, "Upload a photo of your pet" %>
+    <%= form.label :image %>
     <%= form.file_field :image, class: "form-control" %>
   </div>
 
-  <!-- Submit Button -->
   <div class="mt-3">
     <%= form.submit "Create", class: "btn btn-primary" %>
   </div>
+</div>
+
 <% end %>
