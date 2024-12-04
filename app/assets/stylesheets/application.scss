@@ -13,25 +13,11 @@
 @import "components/index";
 @import "pages/index";
 
-
-
 .custom-title {
   font-size: 5rem;  /* You can adjust this value */
   font-weight: bold; /* Optional for making it bold */
   color: #a3c4f3;        /* Pale blue color */
   font-family: 'Impact'
-}
-
-/* This will make the body stretch to the full height of the page */
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-/* Make the content area take all available space except the navbar */
-.container {
-  min-height: 100%;
-  padding-bottom: 60px; /* Ensure there is space for the navbar */
 }
 
 /* Navbar styling */
@@ -41,7 +27,6 @@ nav {
   width: 100%;
   background-color: #333;
   color: white;
-  padding: 10px 0;
 }
 
 nav ul {
@@ -62,21 +47,14 @@ nav ul li i {
 }
 
 nav ul li:hover {
-  background-color: #555; /* Hover effect */
+  background-color: rgb(107, 218, 255); /* Hover effect */
 }
-
-/* Optional: Style for the hover effect */
-nav ul li:hover {
-  background-color: #444;
-}
-
-
 
 .search-bar {
   display: flex;
   align-items: center;
-  border: 1px solid #007bff; /* Blue border */
-  border-radius: 30px;
+  // border: 1px solid #007bff; /* Blue border */
+  border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 5px;
@@ -124,4 +102,8 @@ nav ul li:hover {
 
 .search-button:hover {
   background-color: #0056b3; /* Darker blue on hover */
+}
+
+.form-control {
+  background-color: white;
 }

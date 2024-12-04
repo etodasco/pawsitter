@@ -45,3 +45,17 @@
       background: $gray-200;
     }
 }
+
+.container.border {
+  border-radius: 15px;
+}
+
+#messages {
+  border-radius: 15px;
+  overflow: hidden; /* To prevent any content from spilling over */
+}
+
+/* Apply border-radius to the form input */
+.simple_form input, .simple_form textarea {
+  border-radius: 15px;
+}

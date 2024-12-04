@@ -1,9 +1,23 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [ :home ]
-  
+
   def home
-    # @users = User.all
     @pet_sitters = User.where(pet_sitter: true)
+
+    # Filter by address
+    if params[:address].present?
+      @pet_sitters = @pet_sitters.where("address ILIKE ?", "%#{params[:address]}%")
+    end
+
+    # Filter by availability
+    if params[:start_date].present? && params[:end_date].present?
+      start_date = Date.parse(params[:start_date])
+      end_date = Date.parse(params[:end_date])
+      @pet_sitters = @pet_sitters.joins(:reservations).where.not( # ERROR WITH THIS CODE
+        reservations: { start_date: start_date..end_date, end_date: start_date..end_date }
+      )
+    end
+
     # Geocode users for map markers
     @markers = @pet_sitters.geocoded.map do |pet_sitter|
       {
@@ -13,7 +27,7 @@ class PagesController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }
     end
-    
+
   end
 
   def profile
@@ -27,10 +41,35 @@ class PagesController < ApplicationController
     @reservations_as_petsitter = @user.received_reservations
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to profile_path, notice: "Profile updated successfully."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def pet_sitter_profile
     @pet_sitter_profile = User.find(params[:id])
     @reservations_as_petsitter = @pet_sitter_profile.received_reservations
-
   end
+
+  def show
+    @user = User.find(params[:id])
+    @pet_sitter_profile = Pet_sitter.find(params[:id])
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :address, :nickname, :email, :password, :password_confirmation)
+  end
+
+
 
 end

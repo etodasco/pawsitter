@@ -1,69 +1,76 @@
+<div class="container mt-4">
+  <!-- Header Section -->
+  <div class="text-center mb-4">
+    <h1>👤 <%= @user.nickname.to_s.capitalize || @user.first_name.to_s.capitalize %>'s Profile Page: </h1>
+  </div>
+
+<div class="card shadow-sm p-4">
+    <div class="row mb-3">
+      <div class="col-12 text-center">
+        <h3 class="text-primary"><%= @user.nickname || "No Nickname" %></h3>
+      </div>
+    </div>
+
+<div class="card mb-4 shadow-sm">
+  <div class="card-body">
+    <h3 class="user-info">Personal Information</h3>
+     <div class="col-md-6 mb-3">
+        <div class="row">
+      <!-- First Column -->
+      <div class="col-md-6 mb-3">
+        <p><i class="fas fa-user me-2 text-secondary"></i><strong>First Name:</strong> <%= @user.first_name || "Not provided" %></p>
+        <p><i class="fas fa-user me-2 text-secondary"></i><strong>Last Name:</strong> <%= @user.last_name ||  "Not provided" %></p>
+        <p><i class="fas fa-user me-2 text-secondary"></i><strong>Nickname:</strong> <%= @user.nickname || "Not provided" %></p>
+      </div>
+
+      <!-- Second Column -->
+      <div class="col-md-6 mb-3">
+        <p><i class="fas fa-envelope me-2 text-secondary"></i><strong>Email:</strong> <%= @user.email %></p>
+        <p><i class="fas fa-map-marker-alt me-2 text-secondary"></i><strong>Address:</strong> <%= @user.address || "Not provided" %></p>
+        <p><i class="fas fa-align-left me-2 text-secondary"></i><strong>About me:</strong> <%= @user.description || "Not provided" %></p>
+      </div>
+    </div>
+
+ <!-- Rating Section -->
+    <div class="text-center">
+      <h4><i class="fas fa-star text-warning me-2"></i>Rating:</h4>
+      <p><strong><%= @user.average_rating || 0 %>/5</strong></p>
+    </div>
+  </div>
+
+  <hr>
 
 
-<h1>Profil de <%= @user.nickname || @user.first_name %></h1>
-
-<div class="user-info">
-  <h3>Personal informations</h3>
-  <p><strong>Pseudo :</strong> <%= @user.nickname %></p>
-  <p><strong>First Name :</strong> <%= @user.first_name %></p>
-  <p><strong>Last Name :</strong> <%= @user.last_name %></p>
-  <p><strong>Address :</strong> <%= @user.address %></p>
-  <p><strong>Email :</strong> <%= @user.email %></p>
-  <p><strong>Rating :</strong> <%= @user.average_rating %>/5</p>
-</div>
-
-<hr>
-
-<div class="pets">
-  <h3>My Pets</h3>
+<div class="pets mt-4">
+  <h3 class="user-info">My Pets</h3>
   <% if @pets.any? %>
-    <ul>
+    <div class="row">
       <% @pets.each do |pet| %>
-        <li><%= link_to pet.name, pet_path(pet) %> - <%= pet.species.capitalize %></li>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm">
+            <%# <img src="<%= pet.photo_url || "default_pet.jpg" %>" class="card-img-top" alt="<%= pet.name %>"> %>
+            <div class="card-body">
+              <h5 class="card-title"><%= pet.name %> - <%= pet.species.capitalize %></h5>
+              <%= link_to "View Details", pet_path(pet), class: "btn btn-primary btn-sm" %>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </ul>
+    </div>
   <% else %>
-    <p>You did not add a pet yet</p>
+    <p class="text-muted">You did not add a pet yet.</p>
   <% end %>
-</div>
+  <%= link_to '<i class="fas fa-paw"></i> Add a New Pet'.html_safe, new_pet_path, class: "btn btn-primary mt-2" %>
 
-<hr>
 
-<div class="reservations">
-  <h3>My Reservations</h3>
-  <% if @reservations_as_owner.any? %>
-    <ul>
-      <% @reservations_as_owner.each do |reservation| %>
-        <li>
-          <strong>Reservation :</strong> <%= reservation.status.capitalize %>
-          (<%= link_to "Details", reservation_path(reservation) %>) <!--  détails de la réservation -->
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No reservation</p>
-  <% end %>
 </div>
 
 
 
-<hr>
-
-<div class="reservations">
-  <h3>Reservation request</h3>
-  <% if @reservations_as_petsitter.any? %>
-    <ul>
-      <% @reservations_as_petsitter.each do |reservation| %>
-        <li>
-          <strong>Reservation :</strong> <%= reservation.status.capitalize %>
-          (<%= link_to "Détails", reservation_path(reservation) %>)
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No reservation</p>
-  <% end %>
+<div class="text-center mt-4">
+  <%= link_to "Update Profile", edit_user_registration_path, class: "btn btn-outline-primary btn-lg" %>
 </div>
 
-<div class="actions">
-  <%= link_to "Update profile", edit_user_registration_path %>
+
+
+</div>

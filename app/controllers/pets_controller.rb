@@ -11,14 +11,13 @@ class PetsController < ApplicationController
   end
 
   def new
-    @pet = Pet.new
+    @pet = current_user.pets.new
   end
 
   def create
-    @pet = Pet.new(pet_params)
-    @pet.user = current_user
+    @pet = current_user.pets.new(pet_params)
     if @pet.save
-      redirect_to pet_path(@pet)
+      redirect_to pet_path(@pet), notice: "Pet was successfully created !"
     else
       render :new
     end
@@ -33,9 +32,15 @@ class PetsController < ApplicationController
   end
 
   def destroy
-    @pet.destroy
-    redirect_to pets_path
+    @pet = Pet.find(params[:id])
+    if @pet.destroy
+      flash[:notice] = "Pet successfully deleted."
+      redirect_to profile_path(@pet.user)
+    else
+      flash[:alert] = "Failed to delete the pet."
+      redirect_to pet_path(@pet)
   end
+end
 
   private
 
@@ -44,6 +49,6 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :species, :breed, :age, :size, :description, :price, :photo)
+    params.require(:pet).permit(:name, :species, :description, :checklist, :image)
   end
 end

@@ -1,80 +1,120 @@
-
-<h1>Welcome to Pawsitter</h1>
-
-
-
-  <!-- Search Bar Section -->
-<%= form_with(url: pets_path, method: :get, local: true, class: "container") do |form| %>
-  <div class="input-group">
-    <!-- Address Input with Icon -->
-    <span class="input-group-text bg-light border-0"><i class="fas fa-map-marker-alt"></i></span>
-    <%= form.text_field :address, class: "form-control", placeholder: "Enter location" %>
-
-    <!-- Start Date Input with Icon -->
-    <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
-    <%= form.date_field :start_date, class: "form-control", placeholder: "Start date" %>
-
-    <!-- End Date Input with Icon -->
-    <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
-    <%= form.date_field :end_date, class: "form-control", placeholder: "End date" %>
-
-    <!-- Search Button -->
-    <button type="submit" class="btn btn-primary">
-      <i class="fas fa-search"></i> Search
-    </button>
-  </div>
-<% end %>
-
-<%# Geocoder "Mapbox" %>
-<div class="text-center mb-0">
-  <h3>Pet Sitter Locations</h3>
+<!-- Header: Centered Title -->
+<div class="d-flex justify-content-center align-items-center mt-4 mb-4">
+  <h1>🐾 Pawsitter 🐾</h1>
 </div>
 
-<div class="container d-flex justify-content-center align-items-center" style="height: 55vh;">
-  <div class="map w-100" style="max-width: 100%; height: 400px;"
+<!-- Search Bar Section -->
+<div class="container mb-4">
+  <%= form_with(url: root_path, method: :get, local: true, class: "search-bar") do |form| %>
+    <div class="row g-3">
+      <!-- Address Input with Icon -->
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-0"><i class="fas fa-map-marker-alt"></i></span>
+          <%= form.text_field :address, class: "form-control", placeholder: "Enter location" %>
+        </div>
+      </div>
+
+      <!-- Start Date Input with Icon -->
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
+          <%= form.date_field :start_date, class: "form-control", placeholder: "Start date" %>
+        </div>
+      </div>
+
+      <!-- End Date Input with Icon -->
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
+          <%= form.date_field :end_date, class: "form-control", placeholder: "End date" %>
+        </div>
+      </div>
+
+      <!-- Search Button -->
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary w-100">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    </div>
+  <% end %>
+
+  <script>
+    // Initialize Flatpickr
+    document.addEventListener('DOMContentLoaded', function() {
+      flatpickr("#start_date, #end_date", {
+        dateFormat: "F j, Y",
+        altInput: true,
+        altFormat: "F j, Y",
+        allowInput: true,
+      });
+    });
+  </script>
+</div>
+
+
+<div class="d-flex justify-content-start align-items-center">
+  <h5>Search pawsitters in your area!</h5>
+</div>
+
+<div class="col-12 col-sm-8 col-md-8 col-lg-4">
+  <div
+    class="card shadow-sm"
+    style="height: 100%;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div
+      class="map"
+      style="width: 100%; height: 300px; border-radius: 0.25rem;">
+    </div>
   </div>
 </div>
 
 
-<!-- Album Section -->
+<!-- Section: Popular Sitters -->
 <section class="album py-5 bg-light">
   <div class="container">
     <h2 class="fw-light text-center mb-4">Popular Sitters</h2>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <!-- Center the cards -->
+    <div class="row justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% if @pet_sitters.any? %>
         <% @pet_sitters.each do |pet_sitter| %>
-          <div class="col">
-            <div class="card shadow-sm position-relative">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-              </svg>
-              <div class="position-absolute top-0 end-0 m-2 bg-info text-dark rounded px-2 py-1">
+          <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <!-- Card: Pet Sitter -->
+            <%= link_to pet_sitter_profile_path(pet_sitter), class: "card shadow-sm position-relative text-decoration-none" do %>
+              <% if pet_sitter.image.attached? %>
+                <%= image_tag pet_sitter.image, class: "card-img-top", alt: "#{pet_sitter.nickname} photo", style: "height: 200px; object-fit: cover;" %>
+              <% else %>
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
+                  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c"></rect>
+                </svg>
+              <% end %>
+              <div class="position-absolute top-0 end-0 m-2 bg-light text-dark rounded px-2 py-1">
                 <%= pet_sitter.average_rating || "No Rating" %>
                 <i class="bi bi-star-fill"></i>
               </div>
               <div class="card-body">
-                <h5 class="card-title">
-                  <%= pet_sitter.first_name.to_s.capitalize %> <%= pet_sitter.last_name.to_s.capitalize %>
+                <h5 class="card-title text-center">
+                  <%= pet_sitter.nickname.to_s.capitalize %> <%= pet_sitter.last_name.to_s.capitalize %>
                 </h5>
-                <p class="mb-1">Description: <%= pet_sitter.description %> </p>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View Sitter</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Contact</button>
-                </div>
+                <p class="mb-1 text-center"><%= pet_sitter.description.presence || "No description available" %></p>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
-      </div>
+      <% else %>
+        <p class="text-center">No pet sitters found for your search criteria.</p>
+      <% end %>
+    </div>
   </div>
 </section>
 
-  <!-- Footer -->
-<footer class="text-muted py-5 bg-light">
+<!-- Footer -->
+<footer class="text-muted py-5">
   <div class="container text-center">
     <p class="mb-1">&copy; 2024 PawSitter. All rights reserved.</p>
   </div>
