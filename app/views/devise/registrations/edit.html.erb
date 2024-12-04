@@ -29,6 +29,10 @@
                           <a href='#' data-bs-toggle='modal' data-bs-target='#infoModal'>
                             <i class='bi bi-info-circle-fill' style='cursor: pointer;'></i>
                           </a>".html_safe %>
+      <%= f.input :description,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "About me" }%>
       <%= f.input :address,
                   input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
                   wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
