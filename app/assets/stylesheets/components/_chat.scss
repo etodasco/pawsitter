@@ -1,5 +1,5 @@
 .chat {
-
+  
     .message {
       display: flex;
       flex-direction: column;
@@ -52,7 +52,8 @@
 
 #messages {
   border-radius: 15px;
-  overflow: hidden; /* To prevent any content from spilling over */
+  max-height: 500px;
+  overflow-y: auto;
 }
 
 /* Apply border-radius to the form input */
