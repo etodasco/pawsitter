@@ -32,9 +32,15 @@ class PetsController < ApplicationController
   end
 
   def destroy
-    @pet.destroy
-    redirect_to pets_path, notice: "Profile was deleted !"
+    @pet = Pet.find(params[:id])
+    if @pet.destroy
+      flash[:notice] = "Pet successfully deleted."
+      redirect_to profile_path(@pet.user)
+    else
+      flash[:alert] = "Failed to delete the pet."
+      redirect_to pet_path(@pet)
   end
+end
 
   private
 

@@ -1,5 +1,5 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+<%= resource.errors.messages %>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
@@ -9,8 +9,33 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-
-    <%= f.input :password,
+      <%= f.input :nickname,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "nickname" }%>
+      <%= f.input :first_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "first_name" }%>
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "last_name" }%>
+      <%= f.input :pet_sitter,
+                  collection: [["Yes", true], ["No", false]],
+                  as: :radio_buttons,
+                  required: true,
+                  label: "Do you wish to become a Paw Sitter?
+                          <a href='#' data-bs-toggle='modal' data-bs-target='#infoModal'>
+                            <i class='bi bi-info-circle-fill' style='cursor: pointer;'></i>
+                          </a>".html_safe %>
+      <%= f.input :address,
+                  input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+                  required: true,
+                  autofocus: true %>
+                  <%# # input_html: { autocomplete: "address" } %>
+          <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>

@@ -9,7 +9,7 @@
         <%= link_to reservation_path(reservation), class: 'card-link text-decoration-none text-dark' do %>
           <div class="card shadow-sm">
             <div class="card-body">
-              <h5 class="card-title mb-3">Status: <%= reservation.status %></h5>
+              <h5 class="card-title mb-3">Status: <strong><%= reservation.status.capitalize %></strong></h5>
               <ul class="list-unstyled">
                 <li><strong>Petsitter:</strong> <%= reservation.pet_sitter.nickname.to_s.capitalize %></li>
                 <li><strong>Pet(s): </strong></li>
@@ -21,9 +21,9 @@
               </ul>
                 <div class="d-flex justify-content-between align-items-center mt-3">
                   <% if reservation.status == "accepted" %>
-                  <p>Your reservation request was <strong><%= reservation.status %>!</strong>
+                  <p>Your reservation request was <strong><%= reservation.status.capitalize %>!</strong>
                   <% elsif reservation.status == "declined" %>
-                  <p>Your reservation request was <strong><%= reservation.status %></strong>. You can contact <strong><%= reservation.pet_sitter.nickname.to_s.capitalize %></strong> for more information!</p>
+                  <p>Your reservation request was <strong><%= reservation.status.capitalize %></strong>. You can contact <strong><%= reservation.pet_sitter.nickname.to_s.capitalize %></strong> for more information!</p>
                   <% end %>
                 </div>
                   <div class="d-flex justify-content-between align-items-center mt-3">
@@ -47,7 +47,7 @@
           <%= link_to reservation_path(reservation), class: 'card-link text-decoration-none text-dark' do %>
             <div class="card shadow-sm">
               <div class="card-body">
-                <h5 class="card-title mb-3">Status: <%= reservation.status %></h5>
+                <h5 class="card-title mb-3">Status: <strong><%= reservation.status.capitalize %></strong></h5>
                 <ul class="list-unstyled">
                   <li><strong>Pet Owner:</strong> <%= reservation.pet_owner.nickname.capitalize %></li>
                   <li><strong>Pet(s):</strong></li>

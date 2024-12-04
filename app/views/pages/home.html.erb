@@ -1,59 +1,93 @@
 <!-- Header: Centered Title -->
-<div class="d-flex justify-content-center align-items-center mb-4">
+<div class="d-flex justify-content-center align-items-center mt-4 mb-4">
   <h1>🐾 Pawsitter 🐾</h1>
 </div>
-
 
 <!-- Search Bar Section -->
 <div class="container mb-4">
   <%= form_with(url: root_path, method: :get, local: true, class: "search-bar") do |form| %>
-    <div class="input-group">
+    <div class="row g-3">
       <!-- Address Input with Icon -->
-      <span class="input-group-text bg-light border-0"><i class="fas fa-map-marker-alt"></i></span>
-      <%= form.text_field :address, class: "form-control", placeholder: "Enter location" %>
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-0"><i class="fas fa-map-marker-alt"></i></span>
+          <%= form.text_field :address, class: "form-control", placeholder: "Enter location" %>
+        </div>
+      </div>
 
       <!-- Start Date Input with Icon -->
-      <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
-      <%= form.date_field :start_date, class: "form-control", placeholder: "Start date" %>
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
+          <%= form.date_field :start_date, class: "form-control", placeholder: "Start date" %>
+        </div>
+      </div>
 
       <!-- End Date Input with Icon -->
-      <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
-      <%= form.date_field :end_date, class: "form-control", placeholder: "End date" %>
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-0"><i class="fas fa-calendar-alt"></i></span>
+          <%= form.date_field :end_date, class: "form-control", placeholder: "End date" %>
+        </div>
+      </div>
 
       <!-- Search Button -->
-      <button type="submit" class="btn btn-primary">
-        <i class="fas fa-search"></i> Search
-      </button>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary w-100">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
     </div>
   <% end %>
+
+  <script>
+    // Initialize Flatpickr
+    document.addEventListener('DOMContentLoaded', function() {
+      flatpickr("#start_date, #end_date", {
+        dateFormat: "F j, Y",
+        altInput: true,
+        altFormat: "F j, Y",
+        allowInput: true,
+      });
+    });
+  </script>
 </div>
 
 
-<!-- Map Container (Centered with Flex) -->
-<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1rem; height: 55vh;">
+<div class="d-flex justify-content-start align-items-center">
+  <h5>Search pawsitters in your area!</h5>
+</div>
+
+<div class="col-12 col-sm-8 col-md-8 col-lg-4">
   <div
-    class="map"
-    style="flex-grow: 1; height: 100%;"
+    class="card shadow-sm"
+    style="height: 100%;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div
+      class="map"
+      style="width: 100%; height: 300px; border-radius: 0.25rem;">
+    </div>
   </div>
 </div>
+
 
 <!-- Section: Popular Sitters -->
 <section class="album py-5 bg-light">
   <div class="container">
     <h2 class="fw-light text-center mb-4">Popular Sitters</h2>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <% if @pet_sitters.any? %> <!-- Check if there are pet sitters -->
+    <!-- Center the cards -->
+    <div class="row justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% if @pet_sitters.any? %>
         <% @pet_sitters.each do |pet_sitter| %>
-          <div class="col">
+          <div class="col-12 col-sm-8 col-md-6 col-lg-4">
             <!-- Card: Pet Sitter -->
-            <%= link_to "#", class: "card shadow-sm position-relative text-decoration-none" do %>
+            <%= link_to pet_sitter_profile_path(pet_sitter), class: "card shadow-sm position-relative text-decoration-none" do %>
               <% if pet_sitter.image.attached? %>
-                <%= image_tag pet_sitter.image, class: "card-img-top", alt: "#{pet_sitter.nickname} photo" %>
+                <%= image_tag pet_sitter.image, class: "card-img-top", alt: "#{pet_sitter.nickname} photo", style: "height: 200px; object-fit: cover;" %>
               <% else %>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
                   role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                   <title>Placeholder</title>
                   <rect width="100%" height="100%" fill="#55595c"></rect>
@@ -64,13 +98,10 @@
                 <i class="bi bi-star-fill"></i>
               </div>
               <div class="card-body">
-                <h5 class="card-title">
+                <h5 class="card-title text-center">
                   <%= pet_sitter.nickname.to_s.capitalize %> <%= pet_sitter.last_name.to_s.capitalize %>
                 </h5>
-                <p class="mb-1"><strong></strong> <%= pet_sitter.description.presence || "No description available" %></p>
-                <div class="d-flex justify-content-center">
-                  <span class="btn btn-sm btn-outline-secondary">View Sitter</span>
-                </div>
+                <p class="mb-1 text-center"><%= pet_sitter.description.presence || "No description available" %></p>
               </div>
             <% end %>
           </div>
@@ -81,6 +112,7 @@
     </div>
   </div>
 </section>
+
 <!-- Footer -->
 <footer class="text-muted py-5">
   <div class="container text-center">
