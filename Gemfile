@@ -46,6 +46,8 @@ gem "simple_form"
 gem 'cloudinary'
 
 gem "sassc-rails"
+gem 'pundit'
+
 
 group :development, :test do
  gem "dotenv-rails"
