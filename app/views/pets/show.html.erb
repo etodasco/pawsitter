@@ -1,7 +1,10 @@
 <h1><%= @pet.name %>'s Profile</h1>
 
 <div class="pet-info">
-  <h3>Personal informations</h3>
+  <% if @pet.image.attached? %>
+    <%= cl_image_tag @pet.image.key %>
+  <% end %>
+
   <p><strong>Name :</strong> <%= @pet.name %></p>
   <p><strong>Species :</strong> <%= @pet.species%></p>
   <p><strong>Description :</strong> <%= @pet.description %></p>

@@ -375,7 +375,7 @@ DEPENDENCIES
   bootstrap (~> 5.2)
   brakeman
   capybara
-  cloudinary (~> 1.16)
+  cloudinary
   debug
   devise
   dotenv-rails
