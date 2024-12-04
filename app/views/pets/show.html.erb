@@ -5,10 +5,6 @@
     <%= cl_image_tag @pet.image.key %>
   <% end %>
 
-  <p><strong>Name :</strong> <%= @pet.name %></p>
-  <p><strong>Species :</strong> <%= @pet.species%></p>
-  <p><strong>Description :</strong> <%= @pet.description %></p>
-
   <!-- Affichage de la photo -->
   <% if @pet.image.attached? %>
     <div class="pet-photo mb-4">
