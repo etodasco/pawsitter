@@ -1,10 +1,10 @@
 <h1>Reservations New</h1>
 
-<h2>Book a reservation with <%= @pet_sitter.email %></h2>
+<h2>Book a reservation with <%= @pet_sitter.nickname.to_s.capitalize %></h2>
 
 <%= simple_form_for [@pet_sitter, @reservation], url: pet_sitter_reservations_path do |f| %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
-    <%= f.association :pets, as: :check_boxes %>
+    <%= f.association :pets, collection: Pet.where(user: @pet_sitter), as: :check_boxes %>
     <%= f.submit %>
 <% end %>

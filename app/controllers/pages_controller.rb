@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     if params[:start_date].present? && params[:end_date].present?
       start_date = Date.parse(params[:start_date])
       end_date = Date.parse(params[:end_date])
-      @pet_sitters = @pet_sitters.joins(:reservations).where.not(
+      @pet_sitters = @pet_sitters.joins(:reservations).where.not( # ERROR WITH THIS CODE
         reservations: { start_date: start_date..end_date, end_date: start_date..end_date }
       )
     end
