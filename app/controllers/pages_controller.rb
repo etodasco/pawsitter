@@ -70,6 +70,4 @@ class PagesController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :address, :nickname, :email, :password, :password_confirmation)
   end
 
-
-
 end
