@@ -29,6 +29,8 @@
             <div class="col-md-6 mb-3">
               <p><i class="fas fa-envelope me-2 text-secondary"></i><strong>Email:</strong> <%= @pet_sitter_profile.email %></p>
               <p><i class="fas fa-map-marker-alt me-2 text-secondary"></i><strong>Address:</strong> <%= @pet_sitter_profile.address || "Not provided" %></p>
+              <p><i class="fas fa-align-left me-2 text-secondary"></i><strong>About me:</strong>
+              <%# <%= @user.description || "Not provided" %></p> %>
             </div>
           </div>
 
@@ -40,5 +42,7 @@
         </div>
       </div>
     </div>
+
+  <%= link_to "book now", new_pet_sitter_reservation_path(@pet_sitter_profile) %>
 
     <hr>

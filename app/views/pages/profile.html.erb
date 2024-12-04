@@ -19,14 +19,15 @@
       <!-- First Column -->
       <div class="col-md-6 mb-3">
         <p><i class="fas fa-user me-2 text-secondary"></i><strong>First Name:</strong> <%= @user.first_name || "Not provided" %></p>
-        <p><i class="fas fa-user me-2 text-secondary"></i><strong>Last Name:</strong> <%= @user.last_name| "Not provided" %></p>
-        <p><i class="fas fa-user me-2 text-secondary"></i><strong>Nickname:</strong> <%= @user.nickname|| "Not provided" %></p>
+        <p><i class="fas fa-user me-2 text-secondary"></i><strong>Last Name:</strong> <%= @user.last_name ||  "Not provided" %></p>
+        <p><i class="fas fa-user me-2 text-secondary"></i><strong>Nickname:</strong> <%= @user.nickname || "Not provided" %></p>
       </div>
 
       <!-- Second Column -->
       <div class="col-md-6 mb-3">
         <p><i class="fas fa-envelope me-2 text-secondary"></i><strong>Email:</strong> <%= @user.email %></p>
         <p><i class="fas fa-map-marker-alt me-2 text-secondary"></i><strong>Address:</strong> <%= @user.address || "Not provided" %></p>
+        <p><i class="fas fa-align-left me-2 text-secondary"></i><strong>About me:</strong> <%= @user.description || "Not provided" %></p>
       </div>
     </div>
 
@@ -67,7 +68,7 @@
 
 
 <div class="text-center mt-4">
-  <%= link_to "Update Profile", edit_profile_pet_sitter_index_path, class: "btn btn-outline-primary btn-lg" %>
+  <%= link_to "Update Profile", edit_user_registration_path, class: "btn btn-outline-primary btn-lg" %>
 </div>
 
 
