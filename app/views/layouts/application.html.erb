@@ -32,7 +32,9 @@
     <%= render "shared/navbar" %>
     <div class="container mb-4">
       <%= render "shared/flashes" %>
-      <%= yield %>
+      <div class="content-wrapper">
+        <%= yield %>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>

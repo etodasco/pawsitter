@@ -46,13 +46,19 @@
     }
 }
 
+.wrapper-chat {
+  bottom: 80px;
+  position: fixed;
+  width: 90vw;
+}
+
 .container.border {
   border-radius: 15px;
 }
 
 #messages {
   border-radius: 15px;
-  max-height: 500px;
+  max-height: 35vh;
   overflow-y: auto;
 }
 

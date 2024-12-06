@@ -13,7 +13,7 @@
 @import "components/index";
 @import "pages/index";
 
-.fa-user {
+.fa-regular {
   color: rgb(107, 218, 255)
 }
 
@@ -149,8 +149,6 @@ nav ul li:hover {
   }
 }
 
-
-
 .card-container {
   background-color: white;
 }
@@ -162,4 +160,9 @@ nav ul li:hover {
 
 .form-control {
   background-color: white;
+}
+
+.content-wrapper {
+  // min-height: calc(100vh - 74px);
+  margin-bottom: 90px;
 }
