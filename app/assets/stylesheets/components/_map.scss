@@ -18,17 +18,3 @@
   .mapboxgl-ctrl {
     border-radius: 15px;
   }
-  
-  @media (max-width: 768px) {
-    .map-container {
-      height: 30vh; /* Smaller height for tablets */
-      width: 90vw; /* Smaller width for tablets */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .map-container {
-      height: 25vh; /* Even smaller height for phones */
-      width: 95vw; /* Even smaller width for phones */
-    }
-  }

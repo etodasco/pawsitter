@@ -13,6 +13,26 @@
 @import "components/index";
 @import "pages/index";
 
+.fa-regular {
+  color: rgb(107, 218, 255)
+}
+
+html, body {
+  height: 100%;
+  overflow: auto;
+  margin: 0;
+}
+
+.container {
+  height: auto;
+  overflow: visible;
+}
+
+.d-flex.justify-content-end {
+  position: relative;
+  margin-top: auto; /* Push the button to the bottom */
+}
+
 .custom-title {
   font-size: 5rem;  /* You can adjust this value */
   font-weight: bold; /* Optional for making it bold */
@@ -50,60 +70,99 @@ nav ul li:hover {
   background-color: rgb(107, 218, 255); /* Hover effect */
 }
 
+/* Container for the search bar */
 .search-bar {
   display: flex;
   align-items: center;
-  // border: 1px solid #007bff; /* Blue border */
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 5px;
+  background-color: #ffffff;
+  border-radius: 50px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  border: 1px solid #ddd; /* Light border for contrast */
 }
 
-.destination-input {
+/* Individual input sections */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1;
+  padding: 0 10px;
+}
+
+/* Input fields */
+.search-input {
   border: none;
   padding: 10px 15px;
+  font-size: 14px;
+  outline: none;
+  border-radius: 50px;
+  background-color: transparent;
+  width: 100%;
+}
+
+/* Placeholder or labels inside inputs */
+.input-container .input-label {
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  font-size: 12px;
+  color: #999;
+  background: white;
+  padding: 0 5px;
+  border-radius: 10px;
+}
+
+/* Search button */
+.search-bar-button {
+  background-color: rgb(107, 218, 255);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
   font-size: 16px;
-  flex: 1;
-  border-radius: 30px 0 0 30px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for button */
+.search-bar-button:hover {
+  background-color: #e41d48;
+}
+
+/* Adjust spacing for responsiveness */
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input-container {
+    margin-bottom: 10px;
+  }
+
+  .search-bar-button {
+    align-self: center;
+    width: 100%;
+  }
+}
+
+.card-container {
   background-color: white;
 }
 
-.date-input {
-  border: none;
-  padding: 10px 15px;
-  font-size: 16px;
-  width: 120px;
-}
-
-.date-input:hover {
-  background-color: #007bff; /* Blue background on hover */
-}
-
-.date-input:focus {
-  outline: none;
-  border: 1px solid #0056b3; /* Darker blue on focus */
-}
-
-.destination-input:focus {
-  outline: none;
-  border: 1px solid #007bff; /* Blue border on focus */
-}
-
-.search-button {
-  background-color: #007bff; /* Blue button */
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 0 30px 30px 0;
-  transition: background-color 0.3s;
-}
-
-.search-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+.button-container {
+  display: flex;
+  justify-content: center;
 }
 
 .form-control {
   background-color: white;
+}
+
+.content-wrapper {
+  // min-height: calc(100vh - 74px);
+  margin-bottom: 90px;
 }

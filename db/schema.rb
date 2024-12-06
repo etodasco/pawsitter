@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_06_005654) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_06_002135) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_06_005654) do
     t.bigint "pet_sitter_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
     t.index ["pet_owner_id"], name: "index_reservations_on_pet_owner_id"
     t.index ["pet_sitter_id"], name: "index_reservations_on_pet_sitter_id"
   end
@@ -121,6 +122,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_06_005654) do
     t.float "longitude"
     t.boolean "pet_sitter", default: false
     t.text "description"
+    t.integer "price_per_day"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

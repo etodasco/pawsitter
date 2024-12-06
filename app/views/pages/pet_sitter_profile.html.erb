@@ -2,35 +2,39 @@
 <div class="container mt-4">
   <!-- Header Section -->
   <div class="text-center mb-4">
-    <h1>👤 <%= @pet_sitter_profile.nickname.capitalize %>'s Profile Page:</h1>
+    <h1>👤 <%= @pet_sitter_profile.nickname.capitalize %>'s Profile</h1>
   </div>
 
-  <div class="card shadow-sm p-4">
-    <div class="row mb-3">
-      <div class="col-12 text-center">
-        <h3 class="text-primary"><%= @pet_sitter_profile.nickname %> <%= @pet_sitter_profile.last_name %></h3>
-      </div>
-    </div>
+
 
     <!-- Personal Information -->
     <div class="card mb-4 shadow-sm">
       <div class="card-body">
         <h3 class="user-info">Personal Information</h3>
+        <% if @pet_sitter_profile.image.attached? %>
+          <%= cl_image_tag @pet_sitter_profile.image.key, class: "card-img-top", alt: "#{@pet_sitter_profile.nickname} photo", style: "height: 200px; width: 400px; object-fit: cover;" %>
+        <% else %>
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
+            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#55595c"></rect>
+          </svg>
+        <% end %>
         <div class="col-md-6 mb-3">
           <div class="row">
             <!-- First Column -->
             <div class="col-md-6 mb-3">
-              <p><i class="fas fa-user me-2 text-secondary"></i><strong>First Name:</strong> <%= @pet_sitter_profile.first_name || "Not provided" %></p>
-              <p><i class="fas fa-user me-2 text-secondary"></i><strong>Last Name:</strong> <%= @pet_sitter_profile.last_name || "Not provided" %></p>
-              <p><i class="fas fa-user me-2 text-secondary"></i><strong>Nickname:</strong> <%= @pet_sitter_profile.nickname || "Not provided" %></p>
+              <p><i class="fas fa-user me-2 text-secondary"></i> <%= @pet_sitter_profile.first_name || "Not provided" %></p>
+              <p><i class="fas fa-user me-2 text-secondary"></i> <%= @pet_sitter_profile.last_name || "Not provided" %></p>
+              <p><i class="fas fa-user me-2 text-secondary"></i> <%= @pet_sitter_profile.nickname|| "Not provided" %></p>
             </div>
 
             <!-- Second Column -->
             <div class="col-md-6 mb-3">
-              <p><i class="fas fa-envelope me-2 text-secondary"></i><strong>Email:</strong> <%= @pet_sitter_profile.email %></p>
+              <p><i class="fas fa-envelope me-2 text-secondary"></i> <%= @pet_sitter_profile.email %></p>
               <p><i class="fas fa-map-marker-alt me-2 text-secondary"></i><strong>Address:</strong> <%= @pet_sitter_profile.address || "Not provided" %></p>
-              <p><i class="fas fa-align-left me-2 text-secondary"></i><strong>About me:</strong>
-              <%# <%= @user.description || "Not provided" %></p>
+              <p><i class="fas fa-align-left me-2 text-secondary"></i><strong>About me:</strong> <%= @pet_sitter_profile.description || "Not provided" %></p>
+              <p><i class="fas fa-align-left me-2 text-secondary"></i><strong>My price per day:</strong> <%= @pet_sitter_profile.price_per_day || "Not provided" %>$</p>
             </div>
           </div>
 
@@ -56,6 +60,9 @@
       </div>
     </div>
 
-  <%= link_to "book now", new_pet_sitter_reservation_path(@pet_sitter_profile) %>
+  <%= link_to "Book Now",
+            new_pet_sitter_reservation_path(@pet_sitter_profile),
+            class: "btn btn-primary btn-lg rounded-pill shadow-sm px-4 py-2" %>
+
 
     <hr>
