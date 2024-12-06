@@ -22,7 +22,7 @@
                   collection: [["Yes", true], ["No", false]],
                   as: :radio_buttons,
                   required: true,
-                  label: "Do you wish to become a Paw Sitter? 
+                  label: "Do you wish to become a Paw Sitter?
                           <a href='#' data-bs-toggle='modal' data-bs-target='#infoModal'>
                             <i class='bi bi-info-circle-fill' style='cursor: pointer;'></i>
                           </a>".html_safe %>
@@ -43,9 +43,20 @@
           </div>
         </div>
       </div>
+      <%= f.input :description,
+                  autofocus: true,
+                  input_html: { autocomplete: "About me" },
+                  hint: "Only if you are a pet sitter" %>
+      <%= f.input :price_per_day,
+                  autofocus: true,
+                  hint: "Only if you are a pet sitter" %>
       <%= f.input :address,
                   input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
                   wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+                  required: true,
+                  autofocus: true %>
+      <%= f.input :image,
+                  as: :file,
                   required: true,
                   autofocus: true %>
                   <%# # input_html: { autocomplete: "address" } %>

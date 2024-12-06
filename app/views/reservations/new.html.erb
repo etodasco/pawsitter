@@ -3,8 +3,8 @@
 <h2>Book a reservation with <%= @pet_sitter.nickname.to_s.capitalize %></h2>
 
 <%= simple_form_for [@pet_sitter, @reservation], url: pet_sitter_reservations_path do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.association :pets, collection: Pet.where(user: @pet_sitter), as: :check_boxes %>
+    <%= f.input :start_date, html5: true %>
+    <%= f.input :end_date, html5: true %>
+    <%= f.association :pets, collection: Pet.where(user: current_user), as: :check_boxes %>
     <%= f.submit %>
 <% end %>

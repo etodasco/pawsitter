@@ -16,6 +16,7 @@
           <li><strong>Species: <%= pet.species.capitalize %></strong></li>
           <li><strong>Start Date:</strong> <%= @reservation.start_date %></li>
           <li><strong>End Date:</strong> <%= @reservation.end_date %></li>
+          <li><strong>Price:</strong> <%= @reservation.price %>$</li>
         <% end %>
       <% else %>
         <li>No pets associated with this reservation.</li>
@@ -30,6 +31,7 @@
           <li><strong>Species: <%= pet.species.capitalize %></strong></li>
           <li><strong>Start Date:</strong> <%= @reservation.start_date %></li>
           <li><strong>End Date:</strong> <%= @reservation.end_date %></li>
+          <li><strong>Price:</strong> <%= @reservation.price %>$</li>
         <% end %>
       <% else %>
         <li>No pets associated with this reservation.</li>

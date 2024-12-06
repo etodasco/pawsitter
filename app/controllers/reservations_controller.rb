@@ -7,24 +7,24 @@ class ReservationsController < ApplicationController
     @received_reservations = current_user.received_reservations
   end
 
-  
+
   def new
     @reservation = Reservation.new
   end
-  
+
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.pet_sitter = @pet_sitter
     @reservation.pet_owner = current_user
     @reservation.status = "pending"
-    
+    @reservation.price = @pet_sitter.price_per_day * (@reservation.end_date - @reservation.start_date).to_i
     if @reservation.save
       redirect_to @reservation
     else
       render "new", status: :unprocessable_entity
     end
   end
-  
+
   def show
     @reservation = Reservation.find(params[:id])
     @message = Message.new
