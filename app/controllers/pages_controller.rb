@@ -1,13 +1,11 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [ :home ]
+  before_action :authenticate_user!, only: [:home]
 
   def home
-    @pet_sitters = User.where(pet_sitter: true)
+    @pet_sitters = User.where(pet_sitter: true).where.not(id: current_user.id)
 
     # Filter by address
-    if params[:address].present?
-      @pet_sitters = @pet_sitters.where("address ILIKE ?", "%#{params[:address]}%")
-    end
+    @pet_sitters = @pet_sitters.where("address ILIKE ?", "%#{params[:address]}%") if params[:address].present?
 
     # Filter by availability
     if params[:start_date].present? && params[:end_date].present?
@@ -23,11 +21,10 @@ class PagesController < ApplicationController
       {
         lat: pet_sitter.latitude,
         lng: pet_sitter.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {pet_sitter: pet_sitter}),
+        info_window_html: render_to_string(partial: "info_window", locals: { pet_sitter: pet_sitter }),
         marker_html: render_to_string(partial: "marker")
       }
     end
-
   end
 
   def profile
@@ -67,7 +64,7 @@ class PagesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :address, :nickname, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :address, :nickname, :email, :password,
+                                 :password_confirmation)
   end
-
 end

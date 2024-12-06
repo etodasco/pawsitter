@@ -1,16 +1,10 @@
 <h1><%= @pet.name %>'s Profile</h1>
 
 <div class="pet-info">
-  <% if @pet.image.attached? %>
-    <%= cl_image_tag @pet.image.key %>
-  <% end %>
-
   <!-- Affichage de la photo -->
   <% if @pet.image.attached? %>
-    <div class="pet-photo mb-4">
-      <%= image_tag @pet.image.variant(resize_to_limit: [300, 300]), class: "img-fluid rounded shadow" %>
-    </div>
-  <% else %>
+    <%= cl_image_tag @pet.image.key, class: "img-fluid rounded shadow" %>
+    <% else %>
     <div class="pet-photo mb-4">
       <%= image_tag "rotweille.jpg", alt: "Default pet image", class: "img-fluid rounded shadow" %>
     </div>

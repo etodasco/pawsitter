@@ -64,7 +64,7 @@
             <!-- Card: Pet Sitter -->
             <%= link_to pet_sitter_profile_path(pet_sitter), class: "card shadow-sm position-relative text-decoration-none" do %>
               <% if pet_sitter.image.attached? %>
-                <%= image_tag pet_sitter.image, class: "card-img-top", alt: "#{pet_sitter.nickname} photo", style: "height: 200px; object-fit: cover;" %>
+                <%= cl_image_tag pet_sitter.image.key, class: "card-img-top", alt: "#{pet_sitter.nickname} photo", style: "height: 200px; object-fit: cover;" %>
               <% else %>
                 <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
                   role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
