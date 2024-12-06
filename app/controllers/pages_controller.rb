@@ -57,6 +57,8 @@ class PagesController < ApplicationController
   def pet_sitter_profile
     @pet_sitter_profile = User.find(params[:id])
     @reservations_as_petsitter = @pet_sitter_profile.received_reservations
+    @reviews = Review.joins(:user).where(users: { pet_sitter: true })
+    @review = Review.new
   end
 
   def show
