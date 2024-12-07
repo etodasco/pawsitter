@@ -4,33 +4,42 @@
 </div> %>
 
 <div class="search-bar-container mb-5">
-  <form action="/" method="get" class="search-bar">
-    <div class="input-container">
+  <form action="/" method="get" class="p-3 shadow-sm bg-light rounded">
+    <div class="row g-2 align-items-center">
       <!-- Location Input -->
-      <label for="location">Location</label>
-      <input type="text" id="location" name="location" placeholder="Enter location" required>
-    </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" id="location" name="location" class="form-control" placeholder="Enter location" required>
+        </div>
+      </div>
 
-    <div class="input-container">
       <!-- Start Date Input -->
-      <label for="start-date">Start Date</label>
-      <input type="date" id="start-date" name="start_date" required>
-    </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="start-date" class="form-label">Start Date</label>
+          <input type="date" id="start-date" name="start_date" class="form-control" required>
+        </div>
+      </div>
 
-    <div class="input-container">
       <!-- End Date Input -->
-      <label for="end-date">End Date</label>
-      <input type="date" id="end-date" name="end_date" required>
-    </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="end-date" class="form-label">End Date</label>
+          <input type="date" id="end-date" name="end_date" class="form-control" required>
+        </div>
+      </div>
 
-    <div class="button-container">
       <!-- Search Button -->
-      <button type="submit" class="search-bar-button">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
+      <div class="col-md-2 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary w-100">
+          <i class="fa-solid fa-magnifying-glass me-1"></i> Search
+        </button>
+      </div>
     </div>
   </form>
 </div>
+
 
 <!-- Section: Popular Sitters -->
 <section class="album bg-light">
