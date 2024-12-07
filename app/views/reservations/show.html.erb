@@ -12,7 +12,7 @@
     <% if current_user == @reservation.pet_owner %>
       <!-- Sent Reservation (Owner) -->
       
-    <strong>Pet sitter: <%= @reservation.pet_sitter.first_name.to_s.capitalize %></strong>
+    <strong>Pet sitter: <%= @reservation.pet_sitter.nickname.to_s.capitalize %></strong>
     <ul class="no-bullets">
       <% if @reservation.pets.any? %>
         <% @reservation.pets.each do |pet| %>
