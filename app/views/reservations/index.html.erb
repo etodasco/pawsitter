@@ -24,9 +24,9 @@
               </ul>
               <div class="d-flex justify-content-between align-items-center mt-3">
                 <% if reservation.status == "accepted" %>
-                  <p>Your reservation request was <strong><%= reservation.status.capitalize %>!</strong>
+                  <p>Your reservation request was <strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %>!</strong>
                 <% elsif reservation.status == "declined" %>
-                  <p>Your reservation request was <strong><%= reservation.status.capitalize %></strong>. You can contact <strong><%= reservation.pet_sitter.nickname.to_s.capitalize %></strong> for more information!</p>
+                  <p>Your reservation request was <strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %></strong>. You can contact <strong><%= reservation.pet_sitter.nickname.to_s.capitalize %></strong> for more information!</p>
                 <% end %>
               </div>
               <div class="d-flex justify-content-between align-items-center mt-3">
