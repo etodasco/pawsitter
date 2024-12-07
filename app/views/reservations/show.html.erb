@@ -1,26 +1,31 @@
-<div class="container chat">
-  <h2>Your reservation details:</h2>
+<div class="container chat text-center mb-3">
+  <h1>Reservation details</h1>
 </div>
 
 <div class="container">
   <ul>
     <!-- Display reservation status -->
-    <h5><strong>Reservation Status: <%= @reservation.status.capitalize %></strong></h5>
+    <h6 class="mb-2">
+      Reservation Status:<strong class="<%= status_class(@reservation.status) %>"> <%= @reservation.status.capitalize %></strong> 
+    </h6>
 
     <% if current_user == @reservation.pet_owner %>
       <!-- Sent Reservation (Owner) -->
-      <li><strong>Pet sitter: <%= @reservation.pet_sitter.first_name.to_s.capitalize %></strong></li>
+      
+    <strong>Pet sitter: <%= @reservation.pet_sitter.first_name.to_s.capitalize %></strong>
+    <ul class="no-bullets">
       <% if @reservation.pets.any? %>
         <% @reservation.pets.each do |pet| %>
-          <li><strong>Pet name: <%= pet.name.capitalize %></strong></li>
-          <li><strong>Species: <%= pet.species.capitalize %></strong></li>
-          <li><strong>Start Date:</strong> <%= @reservation.start_date %></li>
-          <li><strong>End Date:</strong> <%= @reservation.end_date %></li>
-          <li><strong>Price:</strong> <%= @reservation.price %>$</li>
+          <li><strong>Pet name: </strong><%= pet.name.capitalize %></li>
+          <li><strong>Species: </strong><%= pet.species.capitalize %></li>
+          <li><strong>Start Date: </strong><%= @reservation.start_date.strftime("%A, %B %d, %Y") %></li>
+          <li><strong>End Date: </strong><%= @reservation.end_date.strftime("%A, %B %d, %Y") %></li>
+          <li><strong>Price: </strong><%= @reservation.price %></li>
         <% end %>
       <% else %>
-        <li>No pets associated with this reservation.</li>
+        <li>No pets found for this reservation.</li>
       <% end %>
+    </ul>
 
     <% elsif current_user == @reservation.pet_sitter %>
       <!-- Received Reservation (Sitter) -->
@@ -29,8 +34,8 @@
         <% @reservation.pets.each do |pet| %>
           <li><strong>Pet name: <%= pet.name.capitalize %></strong></li>
           <li><strong>Species: <%= pet.species.capitalize %></strong></li>
-          <li><strong>Start Date:</strong> <%= @reservation.start_date %></li>
-          <li><strong>End Date:</strong> <%= @reservation.end_date %></li>
+          <li><strong>Start Date:</strong> <%= @reservation.start_date.strftime("%A, %B %d, %Y") %></li>
+          <li><strong>End Date:</strong> <%= @reservation.end_date.strftime("%A, %B %d, %Y") %></li>
           <li><strong>Price:</strong> <%= @reservation.price %>$</li>
         <% end %>
       <% else %>
@@ -83,5 +88,5 @@
 
 
 <div class="d-flex justify-content-end p-4">
-  <%= link_to 'Cancel Reservation', reservation_path(@reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-danger' %>
+  <%= link_to 'Cancel Reservation', reservation_path(@reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-light' %>
 </div>

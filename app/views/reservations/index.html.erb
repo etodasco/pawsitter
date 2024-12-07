@@ -1,23 +1,25 @@
-<div class="container mb-5">
-  <h1 class="mb-3 text-center">My Reservations</h1>
+<div class="container">
+  <h1 class="mb-3 text-center mb-3">My Reservations</h1>
 
   <%# Sent Reservations %>
-  <h2 class="mb-1">Sent Reservations:</h2>
+  <h2 class="mb-3">Sent Reservations:</h2>
   <div class="row">
     <% @sent_reservations.each do |reservation| %>
       <div class="col-12 col-md-6 col-lg-4 mb-4">
         <%= link_to reservation_path(reservation), class: 'card-link text-decoration-none text-dark' do %>
           <div class="card shadow-sm">
             <div class="card-body">
-              <h5 class="card-title mb-3">Status: <strong><%= reservation.status.capitalize %></strong></h5>
+              <h5 class="card-title mb-3">
+                Request: <strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %></strong>
+              </h5>
               <ul class="list-unstyled">
                 <li><strong>Petsitter:</strong> <%= reservation.pet_sitter.nickname.to_s.capitalize %></li>
                 <li><strong>Pet(s): </strong></li>
                 <% reservation.pet_reservations.each do |pet_reservation| %>
                   <li><%= pet_reservation.pet.name.capitalize %></li>
                 <% end %>
-                <li><strong>Start:</strong> <%= reservation.start_date %></li>
-                <li><strong>End:</strong> <%= reservation.end_date %></li>
+                <li><strong>Start:</strong> <%= reservation.start_date.strftime("%A, %B %d, %Y") %></li>
+                <li><strong>End:</strong> <%= reservation.end_date.strftime("%A, %B %d, %Y") %></li>
               </ul>
                 <div class="d-flex justify-content-between align-items-center mt-3">
                   <% if reservation.status == "accepted" %>
@@ -29,7 +31,7 @@
                   <div class="d-flex justify-content-between align-items-center mt-3">
                       <%= link_to 'Cancel Request', reservation_path(reservation), 
                         data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
-                        class: 'btn btn-danger btn-sm ms-auto' %>
+                        class: 'btn btn-light btn-sm ms-auto' %>
                   </div>
             </div>
           </div>
@@ -40,22 +42,24 @@
 
   <%# Received Reservations %>
   <% if current_user.pet_sitter %>
-    <h2 class="mb-1">Received Reservations:</h2>
+    <h2 class="mb-2">Received Reservations:</h2>
     <div class="row">
       <% @received_reservations.each do |reservation| %>
         <div class="col-12 col-md-6 col-lg-4 mb-4">
           <%= link_to reservation_path(reservation), class: 'card-link text-decoration-none text-dark' do %>
             <div class="card shadow-sm">
               <div class="card-body">
-                <h5 class="card-title mb-3">Status: <strong><%= reservation.status.capitalize %></strong></h5>
+                <h5 class="card-title mb-3">
+                  Request: <strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %></strong>
+                </h5>
                 <ul class="list-unstyled">
                   <li><strong>Pet Owner:</strong> <%= reservation.pet_owner.nickname.capitalize %></li>
                   <li><strong>Pet(s):</strong></li>
                   <% reservation.pet_reservations.each do |pet_reservation| %>
                   <%= pet_reservation.pet.name.capitalize %>
                   <% end %>
-                  <li><strong>Start:</strong> <%= reservation.start_date %></li>
-                  <li><strong>End:</strong> <%= reservation.end_date %></li>
+                  <li><strong>Start:</strong> <%= reservation.start_date.strftime("%A, %B %d, %Y") %></li>
+                  <li><strong>End:</strong> <%= reservation.end_date.strftime("%A, %B %d, %Y") %></li>
                 </ul>
                 <div class="d-flex justify-content-end align-items-center mt-3">
                   <% if reservation.status == "pending" %>
