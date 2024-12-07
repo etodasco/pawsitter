@@ -2,16 +2,18 @@ class ReviewsController < ApplicationController
   before_action :set_pet_sitter, only: [:create]  # Find pet sitter to associate with review
 
   def create
-    @review = @user.reviews.new(review_params)
+    @review = @pet_sitter.reviews.new(review_params)
     @review.reviewer = current_user  # The current user is the reviewer
 
     if @review.save
       # Recalculate the average rating
-      @user.update(average_rating: @user.average_rating)
+      raise
+      @average_rating = (Review.group(:rating).sum).fdiv(Review.group(:rating).count)
+      @pet_sitter.update(average_rating: @pet_sitter.average_rating)
 
-      redirect_to user_profile_path(@user), notice: "Review submitted successfully!"
+      redirect_to user_profile_path(@pet_sitter), notice: "Review submitted successfully!"
     else
-      redirect_to user_profile_path(@user), alert: "There was an issue submitting your review."
+      redirect_to user_profile_path(@pet_sitter), alert: "There was an issue submitting your review."
     end
   end
 
