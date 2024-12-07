@@ -4,17 +4,17 @@ User.destroy_all
 
 # Create Users
 puts "Creating Users..."
-eric = User.create!(nickname: "eric", email: "eric@test.ca", password: "test123", pet_sitter: true)
-ashton = User.create!(nickname: "ashton", email: "ashton@test.ca", password: "test123", pet_sitter: true)
-alexa = User.create!(nickname: "alexa", address: "5333 Casgrain Ave Suite 102, Montreal, Quebec H2T 1X3", email: "alexa@test.ca", password: "test123", pet_sitter: true, description: "Experienced sitter with a love for dogs and cats.")
+eric = User.create!(nickname: "eric", email: "eric@test.ca", password: "test123", pet_sitter: true, price_per_day: 20)
+ashton = User.create!(nickname: "ashton", email: "ashton@test.ca", password: "test123", pet_sitter: true, price_per_day: 20)
+alexa = User.create!(nickname: "alexa", address: "5333 Casgrain Ave Suite 102, Montreal, Quebec H2T 1X3", email: "alexa@test.ca", password: "test123", pet_sitter: true, description: "Experienced sitter with a love for dogs and cats.", price_per_day: 20)
 alexa.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/alexa.jpg")), filename: "alexa.jpg")
-maria = User.create!(nickname: "maria", address: "3800 Queen Mary Rd, Montreal, Quebec H3V 1H6", email: "maria@test.ca", password: "test123", pet_sitter: true, description: "Professional pet sitter, happy to care for your pets while you're away!")
+maria = User.create!(nickname: "maria", address: "3800 Queen Mary Rd, Montreal, Quebec H3V 1H6", email: "maria@test.ca", password: "test123", pet_sitter: true, description: "Professional pet sitter, happy to care for your pets while you're away!", price_per_day: 20)
 maria.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/maria.jpg")), filename: "maria.jpg")
-chris = User.create!(nickname: "chris", address: "300 Rue Bridge, Montreal, Quebec H3K 2C3", email: "chris@test.ca", password: "test123", pet_sitter: true, description: "Animal lover and expert in handling all types of pets.")
+chris = User.create!(nickname: "chris", address: "300 Rue Bridge, Montreal, Quebec H3K 2C3", email: "chris@test.ca", password: "test123", pet_sitter: true, description: "Animal lover and expert in handling all types of pets.", price_per_day: 20)
 chris.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/chris.jpg")), filename: "chris.jpg")
-fatima = User.create!(nickname: "fatima", address: "1909 Av. des Canadiens-de-Montréal, Montréal, QC H3B 5E8", email: "fatima@test.ca", password: "test123", pet_sitter: true, description: "Experienced in caring for all kinds of pets, I treat them like family!")
+fatima = User.create!(nickname: "fatima", address: "1909 Av. des Canadiens-de-Montréal, Montréal, QC H3B 5E8", email: "fatima@test.ca", password: "test123", pet_sitter: true, description: "Experienced in caring for all kinds of pets, I treat them like family!", price_per_day: 20)
 fatima.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/fatima.jpg")), filename: "fatima.jpg")
-xiang_wei = User.create!(nickname: "xiang wei", email: "xiangwei_sitter@test.ca", password: "test123", pet_sitter: true, description: "Passionate about animals, I offer personalized care for your furry friends.")
+xiang_wei = User.create!(nickname: "xiang wei", email: "xiangwei_sitter@test.ca", password: "test123", pet_sitter: true, description: "Passionate about animals, I offer personalized care for your furry friends.", price_per_day: 20)
 xiang_wei.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/xiangwei.jpg")), filename: "xiangwei.jpg")
 
 # Create Pets
