@@ -1,83 +1,85 @@
 <div class="container mt-4">
-  <!-- Header Section -->
+  <!-- Header  -->
   <div class="text-center mb-4">
-    <h1>👤 My Profile </h1>
+    <h1>👤 My Profile</h1>
   </div>
 
-
-
-<!-- Card principale -->
+  <!-- Profile Card -->
   <div class="card shadow-sm p-4">
-    <!-- Photo du user -->
+    <!-- User Photo -->
     <div class="text-center mb-4">
       <% if @user.image.attached? %>
         <%= cl_image_tag @user.image.key, alt: "Profile photo", class: "img-fluid rounded shadow", style: "max-height: 300px; object-fit: cover;" %>
       <% else %>
-        <%= image_tag "default_user.jpg", alt: "Default profile photo", class: "img-fluid rounded shadow", style: "max-height: 300px; object-fit: cover;" %>
+        <%= image_tag "petsitters/default_pet_sitter.jpg", alt: "Default profile photo", class: "img-fluid rounded shadow", style: "max-height: 300px; object-fit: cover;" %>
       <% end %>
     </div>
 
+    <!-- User Info -->
+    <div class="card-body">
+      <div class="row">
+        <!-- First Column -->
+        <div class="col-md-6 mb-3">
+          <p><i class="fas fa-user me-2 text-secondary"></i> <%= @user.first_name || "Not provided" %></p>
+          <p><i class="fas fa-user me-2 text-secondary"></i> <%= @user.last_name || "Not provided" %></p>
+          <p><i class="fas fa-user me-2 text-secondary"></i> <%= @user.nickname || "Not provided" %></p>
+        </div>
 
-
-<div class="card mb-4 shadow-sm">
-  <div class="card-body">
-     <div class="col-md-6 mb-3">
-        <div class="row">
-      <!-- First Column -->
-      <div class="col-md-6 mb-3">
-        <p><i class="fas fa-user me-2 text-secondary"></i> <%= @user.first_name || "Not provided" %></p>
-        <p><i class="fas fa-user me-2 text-secondary"></i> <%= @user.last_name ||  "Not provided" %></p>
-        <p><i class="fas fa-user me-2 text-secondary"></i> <%= @user.nickname || "Not provided" %></p>
+        <!-- Second Column -->
+        <div class="col-md-6 mb-3">
+          <p><i class="fas fa-envelope me-2 text-secondary"></i> <%= @user.email %></p>
+          <p><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <strong>Address:</strong> <%= @user.address || "Not provided" %></p>
+          <p><i class="fas fa-align-left me-2 text-secondary"></i> <strong>About me:</strong> <%= @user.description || "Not provided" %></p>
+        </div>
       </div>
 
-      <!-- Second Column -->
-      <div class="col-md-6 mb-3">
-        <p><i class="fas fa-envelope me-2 text-secondary"></i> <%= @user.email %></p>
-        <p><i class="fas fa-map-marker-alt me-2 text-secondary"></i><strong>Address:</strong> <%= @user.address || "Not provided" %></p>
-        <p><i class="fas fa-align-left me-2 text-secondary"></i><strong>About me:</strong> <%= @user.description || "Not provided" %></p>
+      <!-- Rating  -->
+      <div class="text-center">
+        <h4><i class="fas fa-star text-warning me-2"></i> Rating:</h4>
+        <p><strong><%= @user.average_rating || 0 %>/5</strong></p>
       </div>
-    </div>
-
- <!-- Rating Section -->
-    <div class="text-center">
-      <h4><i class="fas fa-star text-warning me-2"></i>Rating:</h4>
-      <p><strong><%= @user.average_rating || 0 %>/5</strong></p>
     </div>
   </div>
 
+
   <hr>
 
-
-<div class="pets mt-4">
-  <h3 class="user-info">My Pets</h3>
-  <% if @pets.any? %>
-    <div class="row">
-      <% @pets.each do |pet| %>
-        <div class="col-md-4 mb-3">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title"><%= pet.name %> - <%= pet.species.capitalize %></h5>
-              <%= link_to "View Details", pet_path(pet), class: "btn btn-primary btn-sm" %>
+  <!-- Pets Section -->
+  <div class="pets mt-4">
+    <h3 class="user-info">My Pets</h3>
+    <% if @pets.any? %>
+      <div class="row">
+        <% @pets.each do |pet| %>
+          <div class="col-md-6 col-sm-12 mb-3">
+            <div class="card shadow-sm">
+              <% if pet.image.attached? %>
+                <%= link_to pet_path(pet) do %>
+                  <%= cl_image_tag pet.image.key, class: "card-img-top img-fluid", alt: "#{pet.name} photo", style: "height: 200px; object-fit: cover;" %>
+                <% end %>
+              <% else %>
+                <%= link_to pet_path(pet) do %>
+                  <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#55595c"></rect>
+                    <text x="50%" y="50%" fill="#eceeef" dy=".3em" text-anchor="middle">No Image</text>
+                  </svg>
+                <% end %>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= pet.name.capitalize %> </h5>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
-  <% else %>
-    <p class="text-muted">You did not add a pet yet.</p>
-  <% end %>
-  <%= link_to '<i class="fas fa-paw"></i> Add a New Pet'.html_safe, new_pet_path, class: "btn btn-primary mt-2" %>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-muted">You did not add a pet yet.</p>
+    <% end %>
+    <%= link_to '<i class="fas fa-paw"></i> Add a New Pet'.html_safe, new_pet_path, class: "btn btn-primary mt-2" %>
+  </div>
 
-
-
-</div>
-
-
-
-<div class="text-center mt-4">
-  <%= link_to "Update Profile", edit_user_registration_path, class: "btn btn-outline-primary btn-lg" %>
-</div>
-
-
-
+  <!-- Update Profile Button -->
+  <div class="text-center mt-4">
+    <%= link_to "Update Profile", edit_user_registration_path, class: "btn btn-outline-primary btn-lg" %>
+  </div>
 </div>
