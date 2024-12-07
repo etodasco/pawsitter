@@ -46,11 +46,7 @@
               <% if pet_sitter.image.attached? %>
                 <%= cl_image_tag pet_sitter.image.key, class: "card-img-top", alt: "#{pet_sitter.nickname} photo", style: "height: 200px; object-fit: cover;" %>
               <% else %>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
-                  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c"></rect>
-                </svg>
+                <%= image_tag "petsitters/default_pet_sitter.jpg", alt: "Default pet sitter photo", class: "img-fluid rounded shadow", style: "max-height: 300px; object-fit: cover;" %>
               <% end %>
               <div class="position-absolute top-0 end-0 m-2 bg-light text-dark rounded px-2 py-1">
                 <%= pet_sitter.average_rating || "No Rating" %>

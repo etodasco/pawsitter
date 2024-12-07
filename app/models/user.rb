@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates :price_per_day, presence: true, if: :pet_sitter
 
   has_many :pets, dependent: :destroy
   has_many :messages
