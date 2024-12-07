@@ -3,43 +3,16 @@
   <h1>🐾 Pawsitter 🐾</h1>
 </div> %>
 
-<div class="search-bar-container mb-5">
-  <form action="/" method="get" class="p-3 shadow-sm bg-light rounded">
-    <div class="row g-2 align-items-center">
-      <!-- Location Input -->
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="location" class="form-label">Location</label>
-          <input type="text" id="location" name="location" class="form-control" placeholder="Enter location" required>
-        </div>
-      </div>
-
-      <!-- Start Date Input -->
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="start-date" class="form-label">Start Date</label>
-          <input type="date" id="start-date" name="start_date" class="form-control" required>
-        </div>
-      </div>
-
-      <!-- End Date Input -->
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="end-date" class="form-label">End Date</label>
-          <input type="date" id="end-date" name="end_date" class="form-control" required>
-        </div>
-      </div>
-
-      <!-- Search Button -->
-      <div class="col-md-2 d-flex align-items-end">
-        <button type="submit" class="btn btn-primary w-100">
-          <i class="fa-solid fa-magnifying-glass me-1"></i> Search
-        </button>
-      </div>
+<div class="search-container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <form action="/" method="get" class="d-flex align-items-center">
+        <input type="text" class="form-control form-control-lg me-2" placeholder="Search for locations..." aria-label="Search">
+        <button type="submit" class="btn btn-primary btn-lg"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
-
 
 <!-- Section: Popular Sitters -->
 <section class="album bg-light">
