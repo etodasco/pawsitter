@@ -34,7 +34,7 @@
               <div class="d-flex justify-content-between align-items-center mt-3">
                 <%= link_to 'Cancel Request', reservation_path(reservation, [:id]), 
                   data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
-                  class: 'btn btn-light btn-sm ms-auto' %>
+                  class: 'btn btn-cancel-reservation btn-sm ms-auto' %>
               </div>
             </div>
           </div>
