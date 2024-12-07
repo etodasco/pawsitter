@@ -39,18 +39,6 @@
             </div>
           </div>
 
-<!--add a review -->
-<%= form_with model: @review, url: reviews_path, method: :post, local: true, id: "review-form" do |form| %>
-  <div class="star-rating">
-    <%= form.label :rating, "Your Rating", class: "form-label" %>
-    <div class="stars">
-      <% 1.upto(5) do |star| %>
-        <%= form.radio_button :rating, star, id: "star-#{star}", class: "d-none", data: { star_value: star } %>
-        <label for="star-<%= star %>" class="star-label" style="cursor: pointer;">★</label>
-      <% end %>
-    </div>
-  </div>
-<% end %>
 
           <!-- Rating Section -->
           <div class="text-center">

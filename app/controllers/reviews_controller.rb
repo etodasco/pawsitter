@@ -28,10 +28,4 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:rating, :content, :user_id)
   end
-  def update_average_rating(pet_sitter)
-    total_ratings = pet_sitter.reviews.pluck(:rating).sum
-    total_reviews = pet_sitter.reviews.count
-    average_rating = total_reviews > 0 ? (total_ratings.to_f / total_reviews).round(1) : 0
-    pet_sitter.update(average_rating: average_rating)
-  end
 end
