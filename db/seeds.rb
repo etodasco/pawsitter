@@ -4,6 +4,7 @@ User.destroy_all
 
 # Create Users
 puts "Creating Users..."
+
 eric = User.create!(nickname: "eric", email: "eric66@yahoo.ca", password: "test123", pet_sitter: true, average_rating: 4, description: "Cats lover!")
 eric.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/eric.jpg")), filename: "eric.jpg")
 ashton = User.create!(nickname: "ashton", email: "ashton23@gmail.ca", password: "test123", pet_sitter: true, average_rating: 5, description: "Live,laugh & Learn")

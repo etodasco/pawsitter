@@ -1,10 +1,38 @@
-// h4 {
-//     color: rgb(107, 218, 255);
-//     font-family: "Flavors", cursive;
-//     font-weight: 300;
-//     font-style: normal;
-//     font-size: 30px;
+// .popular-sitters {
+//   font-size: 40px;
 // }
+
+h2, h5 {
+  font-family: "Playfair", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "width" 100;
+    color: rgb(107, 218, 255)
+}
+
+/* styles.css */
+.search-container {
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+form {
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+input.form-control {
+  border-radius: 20px;
+}
+
+button.btn-primary {
+  background-color: rgb(107, 218, 255);
+  border: none;
+}
+
 
 body {
   background-color: white;

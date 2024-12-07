@@ -15,7 +15,7 @@
   <% if @pet_sitter_profile.image.attached? %>
     <%= cl_image_tag @pet_sitter_profile.image.key, alt: "Pet sitter profile photo", class: "img-fluid rounded shadow", style: "max-height: 300px; object-fit: cover;" %>
   <% else %>
-    <%= image_tag "default_pet_sitter.jpg", alt: "Default pet sitter photo", class: "img-fluid rounded shadow", style: "max-height: 300px; object-fit: cover;" %>
+    <%= image_tag "petsitters/default_pet_sitter.jpg", alt: "Default pet sitter photo", class: "img-fluid rounded shadow", style: "max-height: 300px; object-fit: cover;" %>
   <% end %>
 </div>
 
