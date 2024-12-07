@@ -1,10 +1,10 @@
-<div class="container mt-4">
-  <!-- Titre principal -->
-  <div class="text-center mb-2">
-    <h1>👤 My Profile</h1>
+<div class="container mt-1">
+  <!-- Titre  -->
+  <div class="text-center mb-3">
+    <h1 class="mt-0">👤 My Profile</h1>
   </div>
 
-  <!-- Carte Profil -->
+  <!--  Profil -->
   <div class="card shadow-sm p-3 d-flex flex-row align-items-start">
     <!-- Photo de l'utilisateur -->
     <div class="me-3">
@@ -15,7 +15,7 @@
       <% end %>
     </div>
 
-    <!-- Informations utilisateur -->
+    <!-- Informations user -->
     <div class="flex-grow-1">
       <h5 class="mb-1"><%= @user.first_name %> <%= @user.last_name %></h5>
       <p class="text-muted"><%= @user.nickname || "No nickname provided" %></p>
@@ -23,7 +23,7 @@
       <p><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <strong>Address:</strong> <%= @user.address || "Not provided" %></p>
       <p><i class="fas fa-align-left me-2 text-secondary"></i> <strong>About me:</strong> <%= @user.description || "Not provided" %></p>
 
-      <!-- Évaluation -->
+      <!-- rating -->
       <div class="mt-2">
         <h6><i class="fas fa-star text-warning me-2"></i> Rating:</h6>
         <p><strong><%= @user.average_rating || 0 %>/5</strong></p>
@@ -31,14 +31,14 @@
     </div>
   </div>
 
-  <!-- Bouton mise à jour -->
+  <!-- bouton update -->
   <div class="text-center mt-4">
     <%= link_to "Update Profile", edit_user_registration_path, class: "btn btn-outline-primary btn-sm" %>
   </div>
 </div>
 
-  <!-- Section des animaux -->
-  <hr class="my-4">
+  <!-- pets -->
+  <hr class="my-3">
   <div class="pets">
     <h3 class="user-info">My Pets</h3>
     <% if @pets.any? %>
