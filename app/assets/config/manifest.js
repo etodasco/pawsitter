@@ -10,3 +10,4 @@
 //= link controllers/index.js
 //= link controllers/application.js
 //= link controllers/address_autocomplete_controller.js
+//= link manifest.json
