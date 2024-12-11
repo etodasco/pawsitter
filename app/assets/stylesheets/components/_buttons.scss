@@ -1,3 +1,14 @@
 .btn {
     border-radius: 15px;
 }
+
+// Reservation show buttons
+.btn-view-primary {
+    background-color: rgb(107, 218, 255);
+    color: white;
+  }
+  
+  .btn-cancel-reservation {
+    background-color: #ff7070; /* Your custom color */
+    color: black;
+  }

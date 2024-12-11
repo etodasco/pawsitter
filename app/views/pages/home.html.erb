@@ -3,39 +3,21 @@
   <h1>🐾 Pawsitter 🐾</h1>
 </div> %>
 
-<div class="search-bar-container mb-5">
-  <form action="/" method="get" class="search-bar">
-    <div class="input-container">
-      <!-- Location Input -->
-      <label for="location">Location</label>
-      <input type="text" id="location" name="location" placeholder="Enter location" required>
+<div class="search-container mb-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <form action="/" method="get" class="d-flex align-items-center">
+        <input type="text" class="form-control form-control-lg me-2" placeholder="Search for locations..." aria-label="Search">
+        <button type="submit" class="btn btn-primary btn-lg"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
     </div>
-
-    <div class="input-container">
-      <!-- Start Date Input -->
-      <label for="start-date">Start Date</label>
-      <input type="date" id="start-date" name="start_date" required>
-    </div>
-
-    <div class="input-container">
-      <!-- End Date Input -->
-      <label for="end-date">End Date</label>
-      <input type="date" id="end-date" name="end_date" required>
-    </div>
-
-    <div class="button-container">
-      <!-- Search Button -->
-      <button type="submit" class="search-bar-button">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-    </div>
-  </form>
+  </div>
 </div>
 
 <!-- Section: Popular Sitters -->
 <section class="album bg-light">
   <div class="card-container">
-    <h1 class="fw-light text-center mb-4">Popular Sitters</h1>
+    <h1 class="popular-sitters fw-light text-center mb-4">Popular Sitters</h1>
     <!-- Center the cards -->
     <div class="row justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <% if @pet_sitters.any? %>
@@ -44,19 +26,23 @@
             <!-- Card: Pet Sitter -->
             <%= link_to pet_sitter_profile_path(pet_sitter), class: "card shadow-sm position-relative text-decoration-none" do %>
               <% if pet_sitter.image.attached? %>
-                <%= cl_image_tag pet_sitter.image.key, class: "card-img-top", alt: "#{pet_sitter.nickname} photo", style: "height: 200px; object-fit: cover;" %>
+                <%= cl_image_tag pet_sitter.image.key, class: "card-img-top", alt: "#{pet_sitter.nickname} photo", style: "height: 200px; object-fit: cover; object-position: 50% 25%;" %>
               <% else %>
-                <%= image_tag "petsitters/default_pet_sitter.jpg", alt: "Default pet sitter photo", class: "img-fluid rounded shadow", style: "max-height: 300px; object-fit: cover;" %>
+                <%= image_tag "petsitters/default_pet_sitter.jpg", alt: "Default pet sitter photo", class: "img-fluid rounded shadow", style: "max-height: 200px; object-fit: cover;" %>
               <% end %>
               <div class="position-absolute top-0 end-0 m-2 bg-light text-dark rounded px-2 py-1">
                 <%= pet_sitter.average_rating || "No Rating" %>
                 <i class="bi bi-star-fill"></i>
               </div>
+            <div class="position-absolute bottom-0 start-50 translate-middle-x bg-light text-dark rounded px-2 py-1">
+              <strong>Daily Rate <i class="fa-solid fa-dollar-sign"></i></i> <%= pet_sitter.price_per_day %></strong>
+            </div>
               <div class="card-body">
                 <h5 class="card-title text-center">
-                  <%= pet_sitter.nickname.to_s.capitalize %> <%= pet_sitter.last_name.to_s.capitalize %>
+                  <strong><%= pet_sitter.nickname.to_s.capitalize %></strong> <%= pet_sitter.last_name.to_s.capitalize %>
                 </h5>
                 <p class="mb-1 text-center"><%= pet_sitter.description.presence || "No description available" %></p>
+                <%# <p class="mt-2 mb-1 text-center"> Daily Rate $<%= pet_sitter.price_per_day %></strong></p>
               </div>
             <% end %>
           </div>

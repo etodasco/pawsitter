@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :pets, dependent: :destroy
   has_many :messages
   has_one_attached :image
+  has_many :reviews
 
 
   has_many :sent_reservations, class_name: "Reservation", foreign_key: :pet_owner_id
@@ -15,4 +16,5 @@ class User < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
 end

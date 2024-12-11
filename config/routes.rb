@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [ :show, :destroy ]
-  resources :reviews, only: [:show]
+  resources :reviews, only: [:show, :create]
 
  # get '/profile', to: 'users#show', as: 'profile'
 

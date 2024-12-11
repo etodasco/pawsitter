@@ -5,7 +5,9 @@ class PagesController < ApplicationController
     @pet_sitters = User.where(pet_sitter: true).where.not(id: current_user.id)
 
     # Filter by address
+    if params[:address].present?
     @pet_sitters = @pet_sitters.where("address ILIKE ?", "%#{params[:address]}%") if params[:address].present?
+    end
 
     # Filter by availability
     if params[:start_date].present? && params[:end_date].present?
@@ -54,6 +56,8 @@ class PagesController < ApplicationController
   def pet_sitter_profile
     @pet_sitter_profile = User.find(params[:id])
     @reservations_as_petsitter = @pet_sitter_profile.received_reservations
+    @reviews = Review.joins(:user).where(users: { pet_sitter: true })
+    @review = Review.new
   end
 
   def show
