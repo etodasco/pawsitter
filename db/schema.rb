@@ -115,7 +115,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_06_005654) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
-    t.integer "average_rating"
+    t.integer "average_rating", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"

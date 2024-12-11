@@ -75,7 +75,7 @@
                       class: 'btn btn-success mt-3 me-1' %>
                     <%= link_to 'Decline', reservation_path(reservation, status: "declined"), 
                       data: { turbo_method: :patch, turbo_confirm: 'Are you sure you want to decline this reservation?' }, 
-                      class: 'btn btn-danger mt-3' %>
+                      class: 'btn btn-cancel-reservation mt-3' %>
                   <% end %>
                 </div>
               </div>
