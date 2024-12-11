@@ -5,9 +5,9 @@ User.destroy_all
 # Create Users
 puts "Creating Users..."
 
-eric = User.create!(nickname: "eric", email: "eric66@yahoo.ca", password: "test123", pet_sitter: true, price_per_day: 25, average_rating: 4, description: "Cats lover!")
+eric = User.create!(nickname: "eric", email: "eric@me.ca", password: "test123", address: "2999 A. Jean-Noël-Lavoie, Laval, QC H7P 4K1", pet_sitter: true, price_per_day: 25, average_rating: 4, description: "Animal lover!")
 eric.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/eric.jpg")), filename: "eric.jpg")
-ashton = User.create!(nickname: "ashton", email: "ashton23@gmail.ca", password: "test123", pet_sitter: true, price_per_day: 23, average_rating: 5, description: "Live,laugh & Learn")
+ashton = User.create!(nickname: "ashton", email: "ashton23@gmail.ca", password: "test123", address: "3131 A. Jean-Noël-Lavoie 440) Ouest, Laval, Quebec H7P 5P2", pet_sitter: true, price_per_day: 23, average_rating: 5, description: "Live,laugh & Learn")
 ashton.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/ashton.jpg")), filename: "ashton.jpg")
 alexa = User.create!(nickname: "alexa", address: "5333 Casgrain Ave Suite 102, Montreal, Quebec H2T 1X3", email: "alexa1212@gmail.com", password: "test123", pet_sitter: true, price_per_day: 30, description: "Experienced sitter with a love for dogs and cats.", average_rating: 4)
 alexa.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/alexa.jpg")), filename: "alexa.jpg")
@@ -26,7 +26,8 @@ bella = Pet.create!(name: "bella", species: "dog", description: "rotweiller", us
 bella.image.attach(io: File.open(Rails.root.join("app/assets/images/pets/bella.jpg")), filename: "bella.jpg")
 rocky = Pet.create!(name: "rocky", species: "dog", description: "red", user: fatima)
 troy = Pet.create!(name: "troy", species: "dog", description: "Black and white", user: xiang_wei)
-luna = Pet.create!(name: "luna", species: "cat", description: "white", user: eric)
+luna = Pet.create!(name: "luna", species: "cat", description: "brindled", user: eric)
+luna.image.attach(io: File.open(Rails.root.join("app/assets/images/pets/luna.jpg")), filename: "luna.jpg")
 felix = Pet.create!(name: "felix", species: "cat", description: "tabby", user: ashton)
 felix.image.attach(io: File.open(Rails.root.join("app/assets/images/pets/felix.jpg")), filename: "felix.jpg")
 buddy = Pet.create!(name: "buddy", species: "dog", description: "golden retriever", user: alexa)
