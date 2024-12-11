@@ -37,37 +37,37 @@
   </div>
 </div>
 
-  <!-- pets -->
-  <hr class="my-3">
-  <div class="pets">
-    <h3 class="user-info">My Pets</h3>
-    <% if @pets.any? %>
-      <div class="row g-2">
-        <% @pets.each do |pet| %>
-          <div class="col-6">
-            <div class="card shadow-sm">
-              <% if pet.image.attached? %>
-                <%= link_to pet_path(pet) do %>
-                  <%= cl_image_tag pet.image.key, class: "card-img-top img-fluid", alt: "#{pet.name} photo", style: "height: 120px; object-fit: cover;" %>
-                <% end %>
-              <% else %>
-                <%= link_to pet_path(pet) do %>
-                  <div class="card-img-top d-flex justify-content-center align-items-center" style="height: 120px; background: #f5f5f5;">
+<hr class="my-3">
+<div class="pets">
+  <h3 class="user-info">My Pets</h3>
+  <% if @pets.any? %>
+    <section class="album bg-light">
+      <div class="card-container">
+        <div class="row justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <% @pets.each do |pet| %>
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+              <!-- Card: Pet -->
+              <%= link_to pet_path(pet), class: "card shadow-sm position-relative text-decoration-none" do %>
+                <% if pet.image.attached? %>
+                  <%= cl_image_tag pet.image.key, class: "card-img-top", alt: "#{pet.name} photo", style: "height: 200px; object-fit: cover; object-position: 50% 25%;" %>
+                <% else %>
+                  <div class="card-img-top d-flex justify-content-center align-items-center" style="height: 200px; background: #f5f5f5;">
                     <p class="text-muted">No Image</p>
                   </div>
                 <% end %>
-              <% end %>
-              <div class="card-body text-center">
-                <h6 class="card-title"><%= pet.name.capitalize %></h6>
-              </div>
+                <div class="card-body text-center">
+                  <h6 class="card-title"><%= pet.name.capitalize %></h6>
+                </div>
+              <% end %> <!-- This closes the link_to block -->
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-    <% else %>
-      <p class="text-muted">You did not add a pet yet.</p>
-    <% end %>
-    <div class="text-center mt-3">
-      <%= link_to '<i class="fas fa-paw"></i> Add a New Pet'.html_safe, new_pet_path, class: "btn btn-primary btn-sm" %>
-    </div>
+    </section>
+  <% else %>
+    <p class="text-muted">You did not add a pet yet.</p>
+  <% end %>
+  <div class="text-center mt-3">
+    <%= link_to '<i class="fas fa-paw"></i> Add a New Pet'.html_safe, new_pet_path, class: "btn btn-primary btn-sm" %>
   </div>
+</div>
