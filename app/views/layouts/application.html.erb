@@ -8,6 +8,24 @@
     <%= csp_meta_tag %>
 
     <%= yield :head %>
+    <title><%= meta_title %></title>
+<meta name="description" content="<%= meta_description %>">
+
+<!– Facebook Open Graph data –>
+<meta property="og:title" content="<%= meta_title %>" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="<%= request.original_url %>" />
+<meta property="og:image" content="<%= meta_image %>" />
+<meta property="og:description" content="<%= meta_description %>" />
+<meta property="og:site_name" content="<%= meta_title %>" />
+
+<!– Twitter Card data –>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+<meta name="twitter:title" content="<%= meta_title %>">
+<meta name="twitter:description" content="<%= meta_description %>">
+<meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+<meta name="twitter:image:src" content="<%= meta_image %>">
 
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
@@ -23,7 +41,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=Roboto:ital,wght@1,300&family=Rubik+Puddles&display=swap" rel="stylesheet">
-    <%# Popular sitters home page %>  
+    <%# Popular sitters home page %>
     <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto:ital,wght@1,300&family=Rubik+Puddles&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
