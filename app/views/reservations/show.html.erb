@@ -61,10 +61,10 @@
           <% @reservation.messages.each do |message| %>
             <div class="message <%= message.user == current_user ? 'sent' : 'received' %>">
               <div class="message-content">
-                <%= message.content %> <!-- Display the message content -->
+                <%= message.content %>
               </div>
               <div class="message-info">
-                <%= message.created_at.strftime("%b %d, %Y %I:%M %p") %> <!-- Display message timestamp -->
+                <%= message.created_at.strftime("%b %d, %Y %I:%M %p") %>
               </div>
             </div>
           <% end %>
@@ -86,7 +86,9 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-between">
-  <%= link_to 'All reservation requests', reservations_path, class: "btn btn-view-primary btn-sm" %>
-  <%= link_to 'Cancel Reservation', reservation_path(@reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-cancel-reservation btn-sm' %>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <%= link_to 'All reservation requests', reservations_path, class: "btn btn-view-primary btn-sm me-2" %>
+    <%= link_to 'Cancel Reservation', reservation_path(@reservation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, class: 'btn btn-cancel-reservation btn-sm' %>
+  </div>
 </div>
