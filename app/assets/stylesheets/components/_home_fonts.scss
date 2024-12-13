@@ -1,6 +1,3 @@
-// .popular-sitters {
-//   font-size: 40px;
-// }
 
 h2, h5 {
   font-family: "Playfair", serif;
@@ -12,10 +9,13 @@ h2, h5 {
     color: rgb(107, 218, 255)
 }
 
-/* styles.css */
 .search-container {
   background-color: #ffffff;
   border-radius: 50%;
+}
+
+#search_bar_boarder {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 form {
@@ -23,6 +23,7 @@ form {
   border-radius: 15px;
   padding: 15px;
 }
+
 
 input.form-control {
   border-radius: 20px;
