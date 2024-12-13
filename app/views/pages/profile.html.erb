@@ -4,16 +4,17 @@
     <h1 class="mt-0"> My Profile</h1>
   </div>
 
-  <!--  Profil -->
-  <div class="card shadow-sm p-3 d-flex flex-row align-items-start">
-    <!-- Photo de l'utilisateur -->
-    <div class="me-3">
-      <% if @user.image.attached? %>
-        <%= cl_image_tag @user.image.key, alt: "Profile photo", class: "img-fluid rounded-circle shadow", style: "height: 150px; width: 150px; object-fit: cover;" %>
-      <% else %>
-        <%= image_tag "petsitters/default_pet_sitter.jpg", alt: "Default profile photo", class: "img-fluid rounded shadow", style: "height: 100px; width: 100px; object-fit: cover;" %>
-      <% end %>
-    </div>
+  <!-- Profil -->
+<div class="card shadow-sm p-3 d-flex flex-row align-items-start">
+  <!-- Photo de l'utilisateur -->
+  <div class="me-3" style="width: 250px; height: 150px;">
+    <% if @user.image.attached? %>
+      <%= cl_image_tag @user.image.key,
+          alt: "Profile photo", class: "img-fluid shadow", style: "height: 100%; width: 100%; object-fit: cover; border-radius: 15px;" %>
+    <% else %>
+      <%= image_tag "petsitters/default_pet_sitter.jpg", alt: "Default profile photo", class: "img-fluid shadow", style: "height: 100%; width: 100%; object-fit: cover; border-radius: 15px;" %>
+    <% end %>
+  </div>
 
     <!-- Informations user -->
     <div class="flex-grow-1">

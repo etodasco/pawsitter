@@ -5,9 +5,9 @@ User.destroy_all
 # Create Users
 puts "Creating Users..."
 
-eric = User.create!(nickname: "Eric", email: "eric@me.ca", password: "test123", address: "5333 Casgrain Ave Suite 102, Montreal, Quebec H2T 1X3", pet_sitter: true, price_per_day: 25, average_rating: 4, description: "Animal lover!", availability_start: Date.today + 1, availability_end: Date.today + 15)
+eric = User.create!(nickname: "Eric", email: "eric@me.ca", password: "test123", address: "5333 Casgrain Ave Suite 102, Montreal, Quebec H2T 1X3", pet_sitter: true, price_per_day: 25, average_rating: 4, description: "Passionate animal lover with a genuine affection for all creatures, big and small.", availability_start: Date.today + 1, availability_end: Date.today + 15)
 eric.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/eric.jpg")), filename: "eric.jpg")
-ashton = User.create!(nickname: "Ashton", email: "ashton23@gmail.ca", password: "test123", address: "2999 A. Jean-Noël-Lavoie, Laval, QC H7P 4K1", pet_sitter: true, price_per_day: 23, average_rating: 5, description: "Live,laugh & Learn")
+ashton = User.create!(nickname: "Ashton", email: "ashton23@gmail.ca", password: "test123", address: "2999 A. Jean-Noël-Lavoie, Laval, QC H7P 4K1", pet_sitter: true, price_per_day: 23, average_rating: 5, description: "Live ,laugh & Learn")
 ashton.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/ashton.jpg")), filename: "ashton.jpg")
 felisha = User.create!(nickname: "Felisha", address: "1909 Av. des Canadiens-de-Montréal, Montréal, QC H3B 5E8", email: "felisha1212@gmail.com", password: "test123", pet_sitter: true, price_per_day: 30, description: "Experienced sitter with a love for dogs and cats.", average_rating: 4, availability_start: Date.today + 1, availability_end: Date.today + 15)
 felisha.image.attach(io: File.open(Rails.root.join("app/assets/images/petsitters/felisha.jpg")), filename: "felisha.jpg")
