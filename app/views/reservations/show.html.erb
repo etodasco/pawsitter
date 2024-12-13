@@ -64,7 +64,7 @@
                 <%= message.content %>
               </div>
               <div class="message-info">
-                <%= message.created_at.strftime("%b %d, %Y %I:%M %p") %>
+                <%= message.created_at.strftime("%b %d, %Y %I:%M %p").in_time_zone("Eastern Time (US & Canada)") %>
               </div>
             </div>
           <% end %>
