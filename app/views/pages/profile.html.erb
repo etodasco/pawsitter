@@ -10,14 +10,9 @@
   <div class="me-3" style="width: 250px; height: 150px;">
     <% if @user.image.attached? %>
       <%= cl_image_tag @user.image.key,
-          alt: "Profile photo",
-          class: "img-fluid shadow",
-          style: "height: 100%; width: 100%; object-fit: cover; border-radius: 15px;" %>
+          alt: "Profile photo", class: "img-fluid shadow", style: "height: 100%; width: 100%; object-fit: cover; border-radius: 15px;" %>
     <% else %>
-      <%= image_tag "petsitters/default_pet_sitter.jpg",
-          alt: "Default profile photo",
-          class: "img-fluid shadow",
-          style: "height: 100%; width: 100%; object-fit: cover; border-radius: 15px;" %>
+      <%= image_tag "petsitters/default_pet_sitter.jpg", alt: "Default profile photo", class: "img-fluid shadow", style: "height: 100%; width: 100%; object-fit: cover; border-radius: 15px;" %>
     <% end %>
   </div>
 
