@@ -13,6 +13,10 @@
 @import "components/index";
 @import "pages/index";
 
+.new_user {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15)
+}
+
 .fa-regular {
   color: rgb(107, 218, 255)
 }
