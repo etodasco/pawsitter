@@ -18,6 +18,7 @@ class ReservationsController < ApplicationController
     @reservation.pet_owner = current_user
     @reservation.status = "pending"
     @reservation.price = @pet_sitter.price_per_day * (@reservation.end_date - @reservation.start_date).to_i
+  
     if @reservation.save
       redirect_to reservation_path(@reservation)
     else

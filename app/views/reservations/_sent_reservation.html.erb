@@ -1,0 +1,36 @@
+
+<div id="<%= dom_id(reservation) %>" class="col-12 col-md-6 col-lg-4 mb-4">
+<%= link_to reservation_path(reservation), class: 'card-link text-decoration-none text-dark' do %>
+    <div class="card shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title mb-3">
+        <strong>Status: </strong><strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %></strong>
+        </h5>
+        <ul class="list-unstyled">
+        <li><strong>Petsitter:</strong> <%= reservation.pet_sitter.nickname.to_s.capitalize %></li>
+        <li><strong>Pet(s): </strong> <% reservation.pet_reservations.each do |pet_reservation| %>
+            <%= pet_reservation.pet.name.capitalize %></li>
+        <% end %>
+        <li><strong>Start:</strong> <%= reservation.start_date.strftime("%A, %B %d, %Y") %></li>
+        <li><strong>End:</strong> <%= reservation.end_date.strftime("%A, %B %d, %Y") %></li>
+        <li><strong>Total Price:</strong> $<%= reservation.price %></li>
+        </ul>
+        <p><strong>Message:</strong></p>
+        <div class="d-flex justify-content-between align-items-center">
+        <% if reservation.status == "accepted" %>
+            <p>Your reservation request was <strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %>!</strong>
+        <% elsif reservation.status == "declined" %>
+            <p>Your reservation request was <strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %></strong>. You can contact <strong><%= reservation.pet_sitter.nickname.to_s.capitalize %></strong> for more information!</p>
+        <% elsif reservation.status == "pending" %>
+        <p>Your reservation request is currently <strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %></strong>. <strong><%= reservation.pet_sitter.nickname.to_s.capitalize %></strong> will review your request shortly!</p>
+        <% end %>
+        </div> 
+        <div class="d-flex justify-content-between align-items-center mt-3">
+        <%= link_to 'Cancel Request', reservation_path(reservation, [:id]), 
+            data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to cancel this reservation?' }, 
+            class: 'btn btn-cancel-reservation btn-sm ms-auto' %>
+        </div>
+    </div>
+    </div>
+<% end %>
+</div>
