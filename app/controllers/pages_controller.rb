@@ -4,17 +4,19 @@ class PagesController < ApplicationController
   def home
     @pet_sitters = User.where(pet_sitter: true).where.not(id: current_user.id)
 
-    # Filter by address
     if params[:address].present?
-    @pet_sitters = @pet_sitters.where("address ILIKE ?", "%#{params[:address]}%") if params[:address].present?
+      @pet_sitters = @pet_sitters.where("address ILIKE ?", "%#{params[:address]}%")
     end
 
-    # Filter by availability
+
     if params[:start_date].present? && params[:end_date].present?
       start_date = Date.parse(params[:start_date])
       end_date = Date.parse(params[:end_date])
-      @pet_sitters = @pet_sitters.joins(:reservations).where.not( # ERROR WITH THIS CODE
-        reservations: { start_date: start_date..end_date, end_date: start_date..end_date }
+
+
+      @pet_sitters = @pet_sitters.where(
+        "availability_start <= ? AND availability_end >= ?",
+        start_date, end_date
       )
     end
 
