@@ -11,7 +11,7 @@
     <!-- Photo du pet sitter -->
     <div class="me-3" style="width: 250px; height: 150px;">
       <% if @pet_sitter_profile.image.attached? %>
-        <%= cl_image_tag @pet_sitter_profile.image.key, alt: "Pet sitter profile photo", class: "img-fluid rounded shadow", style: "height: 120px; width: 120px; object-fit: cover;" %>
+        <%= cl_image_tag @pet_sitter_profile.image.key, alt: "Pet sitter profile photo", class: "img-fluid shadow", style: "height: 100%; width: 100%; object-fit: cover; border-radius: 15px;" %>
       <% else %>
         <%= image_tag "petsitters/default_pet_sitter.jpg", alt: "Default pet sitter photo", class: "img-fluid rounded shadow", style: "height: 120px; width: 120px; object-fit: cover;" %>
       <% end %>
