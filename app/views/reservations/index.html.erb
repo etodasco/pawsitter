@@ -11,7 +11,7 @@
           <div class="card shadow-sm">
             <div class="card-body">
               <h5 class="card-title mb-3">
-                Request: <strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %></strong>
+                <strong>Status: </strong><strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %></strong>
               </h5>
               <ul class="list-unstyled">
                 <li><strong>Petsitter:</strong> <%= reservation.pet_sitter.nickname.to_s.capitalize %></li>
@@ -57,7 +57,7 @@
             <div class="card shadow-sm">
               <div class="card-body">
                 <h5 class="card-title mb-3">
-                  Request: <strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %></strong>
+                  <strong>Status: </strong><strong class="<%= status_class(reservation.status) %>"><%= reservation.status.capitalize %></strong>
                 </h5>
                 <ul class="list-unstyled">
                   <li><strong>Pet Owner:</strong> <%= reservation.pet_owner.nickname.capitalize %></li>

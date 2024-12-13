@@ -17,7 +17,10 @@
 
     <!-- Informations user -->
     <div class="flex-grow-1">
+
       <h5 class="mb-1 text-black"><%= @user.first_name %> <%= @user.last_name %></h5>
+
+
       <p class="text-muted fs-5">"<%= @user.nickname.capitalize || "No nickname provided" %>"</p>
       <p><i class="fas fa-envelope me-2 text-secondary"></i> <%= @user.email %></p>
       <p><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <strong>Address:</strong> <%= @user.address || "Not provided" %></p>
