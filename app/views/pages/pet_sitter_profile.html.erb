@@ -1,7 +1,9 @@
 <div class="container mt-4">
   <!-- Header -->
   <div class="text-center mb-4">
+
     <h1> <%= @pet_sitter_profile.nickname.capitalize %>'s Info</h1>
+
   </div>
 
   <!-- Carte principale -->
@@ -22,7 +24,7 @@
       <p><i class="fas fa-envelope me-2 text-secondary"></i> <%= @pet_sitter_profile.email %></p>
       <p><i class="fas fa-map-marker-alt me-2 text-secondary"></i><strong>Address:</strong> <%= @pet_sitter_profile.address || "Not provided" %></p>
       <p><i class="fas fa-align-left me-2 text-secondary"></i><strong>About me:</strong> <%= @pet_sitter_profile.description || "Not provided" %></p>
-      <p><i class="fas fa-dollar-sign me-2 text-secondary"></i><strong>Price per day:</strong> <%= @pet_sitter_profile.price_per_day || "Not provided" %> $</p>
+      <p><i class="fas fa-dollar-sign me-2 text-secondary"></i><strong>Price per day:</strong> <%= @pet_sitter_profile.price_per_day || "Not provided" %> </p>
 
       <!-- Section de notation -->
       <div class="mt-3">
