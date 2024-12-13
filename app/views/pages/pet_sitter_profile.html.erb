@@ -1,7 +1,9 @@
 <div class="container mt-4">
   <!-- Header -->
   <div class="text-center mb-4">
-    <h1><%= @pet_sitter_profile.nickname.capitalize %>'s Info</h1>
+
+    <h1> <%= @pet_sitter_profile.nickname.capitalize %>'s Info</h1>
+
   </div>
 
   <!-- Carte principale -->
@@ -35,6 +37,6 @@
   <!-- Bouton réservation -->
   <div class="text-center mt-4">
     <%= link_to "Book Now", new_pet_sitter_reservation_path(@pet_sitter_profile),
-        class: "btn btn-primary btn-sm rounded-pill shadow-sm px-3 py-2" %>
+        class: "btn btn-book-now btn-sm rounded-pill shadow-sm px-3 py-2" %>
   </div>
 </div>

@@ -8,7 +8,51 @@
     color: white;
   }
   
-  .btn-cancel-reservation {
-    background-color: #ff7070; /* Your custom color */
+.btn-cancel-reservation {
+    background-color: #ff7070;
     color: black;
   }
+
+.btn-book-now {
+  background-color: rgb(107, 218, 255)
+}
+
+.btn-update-profile {
+  background-color: rgb(107, 218, 255)
+}
+
+.btn-update-profile:hoverv {
+  background-color: rgb(107, 218, 255)
+}
+
+.btn-add-new-pet {
+  background-color: rgb(107, 218, 255)
+}
+
+.btn-add-new-pet:hover {
+  background-color: rgb(107, 218, 255)
+}
+
+.btn-back-to-profile {
+  background-color: rgb(107, 218, 255)
+}
+
+.btn-back-to-profile:hover {
+  background-color: rgb(107, 218, 255)
+}
+
+.btn-delete-pet {
+  background-color: #ff7070;
+}
+
+.btn-delete-pet:hover {
+  background-color: #ff7070;
+}
+
+.btn-create-pet {
+  background-color: rgb(107, 218, 255)
+}
+
+.btn-create-reservation {
+  background-color: rgb(107, 218, 255)
+}

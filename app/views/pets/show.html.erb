@@ -27,8 +27,8 @@
 
     <!-- Boutons -->
     <div class="text-center mt-3">
-      <%= link_to "Back to Profile", profile_path(@pet.user), class: "btn btn-outline-primary me-2" %>
-      <%= link_to "Delete Pet", pet_path(@pet), method: :delete, data: { confirm: "Are you sure you want to delete this pet?" }, class: "btn btn-outline-danger" %>
+      <%= link_to "Back to Profile", profile_path(@pet.user), class: "btn btn-back-to-profile me-2" %>
+      <%= link_to "Delete Pet", pet_path(@pet), method: :delete, data: { confirm: "Are you sure you want to delete this pet?" }, class: "btn btn-delete-pet" %>
     </div>
   </div>
 </div>
