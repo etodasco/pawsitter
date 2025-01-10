@@ -125,17 +125,17 @@ GEM
     drb (2.2.1)
     erubi (1.13.0)
     execjs (2.10.0)
-    ffi (1.17.0-aarch64-linux-gnu)
-    ffi (1.17.0-aarch64-linux-musl)
-    ffi (1.17.0-arm-linux-gnu)
-    ffi (1.17.0-arm-linux-musl)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86-linux-gnu)
-    ffi (1.17.0-x86-linux-musl)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
-    ffi (1.17.0-x86_64-linux-musl)
-    font-awesome-sass (6.5.2)
+    ffi (1.17.1-aarch64-linux-gnu)
+    ffi (1.17.1-aarch64-linux-musl)
+    ffi (1.17.1-arm-linux-gnu)
+    ffi (1.17.1-arm-linux-musl)
+    ffi (1.17.1-arm64-darwin)
+    ffi (1.17.1-x86-linux-gnu)
+    ffi (1.17.1-x86-linux-musl)
+    ffi (1.17.1-x86_64-darwin)
+    ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.1-x86_64-linux-musl)
+    font-awesome-sass (6.7.2)
       sassc (~> 2.0)
     geocoder (1.8.3)
       base64 (>= 0.1.0)
@@ -381,7 +381,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
-  font-awesome-sass (~> 6.1)
+  font-awesome-sass (~> 6.7)
   geocoder
   importmap-rails
   pg (~> 1.1)
